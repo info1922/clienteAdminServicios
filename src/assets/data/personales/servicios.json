@@ -1,0 +1,496 @@
+[{
+        "tipo": "cafeterias",
+        "nombre": "Cafeterías",
+        "icono": "fa fa-coffee",
+        "colorLogo": "bg-warning bg-darken-4",
+        "color": "bg-warning bg-darken-4 ",
+        "colorTexto": "red darken-4",
+        "titulo": "Cafeterías",
+        "url": "/servicios/cafeterias",
+        "datos": [{
+                "nombre": "Claro de luna",
+                "nombreAcortado": "laloma",
+                "url": "/servicio/clarodeluna",
+                "imagen": "assets/images/carousel/superanuncio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+            },
+            {
+                "nombre": "Café 780",
+                "nombreAcortado": "laloma",
+                "url": "/servicio/cafe780",
+                "imagen": "assets/images/carousel/superanuncio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    },
+    {
+        "tipo": "restaurantes",
+        "nombre": "Restaurante",
+        "icono": "fa fa-cutlery",
+        "colorLogo": "bg-gradient-y-pink",
+        "color": "bg-gradient-y-pink",
+        "colorTexto": "red darken-4",
+        "titulo": "Restaurante",
+        "url": "/servicios/restaurantes",
+        "datos": [{
+                "nombre": "La Loma",
+                "nombreAcortado": "laloma",
+                "url": "/servicio/laloma",
+                "imagen": "assets/images/carousel/superanuncio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Las orquideas",
+                "nombreAcortado": "lasorquideas",
+                "url": "/servicio/lasorquideas",
+                "imagen": "assets/images/carousel/superanuncio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "La escondida",
+                "nombreAcortado": "laescondida",
+                "url": "/servicio/laescondida",
+                "imagen": "assets/images/carousel/superanuncio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Carlitos",
+                "nombreAcortado": "carlitos",
+                "url": "/servicio/carlitos",
+                "imagen": "assets/images/carousel/superanuncio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "clinicas",
+        "nombre": "Clínicas",
+        "icono": "fa fa-ambulance",
+        "colorLogo": "bg-primary bg-darken-2",
+        "color": "bg-gradient-x-primary",
+        "colorTexto": "primary",
+        "titulo": "Clínicas",
+        "url": "/servicios/clinicas",
+        "datos": [{
+                "nombre": "Clínica San José",
+                "nombreAcortado": "clinicasanjose",
+                "url": "/servicio/clinicasanjose",
+                "imagen": "assets/images/carousel/anunciando-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Hospital del Ángel",
+                "nombreAcortado": "hospitaldelangel",
+                "url": "/servicio/hospitaldelangel",
+                "imagen": "assets/images/carousel/anunciando-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "medicos",
+        "nombre": "Médicos",
+        "icono": "fa fa-user-md",
+        "colorLogo": "bg-primary bg-darken-2",
+        "color": "bg-gradient-x-primary",
+        "colorTexto": "primary",
+        "titulo": "Médicos",
+        "url": "/servicios/medicos",
+        "datos": [{
+                "nombre": "Dr. Lázaro",
+                "nombreAcortado": "drlazaro",
+                "url": "/servicio/drlazaro",
+                "imagen": "assets/images/carousel/anunciando-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Dr. Juan Manuel",
+                "nombreAcortado": "drmanuel",
+                "url": "/servicio/drmanuel",
+                "imagen": "assets/images/carousel/anunciando-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "taxis",
+        "nombre": "Taxis",
+        "icono": "fa fa-taxi",
+        "colorLogo": "bg-amber bg-lighten-1",
+        "color": "bg-amber bg-lighten-1",
+        "colorTexto": "amber",
+        "titulo": "Taxis",
+        "url": "/servicios/taxis",
+        "datos": [{
+                "nombre": "3 de Octubre",
+                "nombreAcortado": "taxi3deoctubre",
+                "url": "/servicio/taxi3deoctubre",
+                "imagen": "assets/images/carousel/anunciaraqui-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Sitio Libertad",
+                "nombreAcortado": "sitiolibertad",
+                "url": "/servicio/sitiolibertad",
+                "imagen": "assets/images/carousel/anunciaraqui-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "mecanicos",
+        "nombre": "Mecánicos",
+        "icono": "fa fa-car",
+        "colorLogo": "bg-amber bg-darken-1",
+        "color": "bg-amber bg-darken-1",
+        "colorTexto": "amber",
+        "titulo": "Mecánicos",
+        "url": "/servicios/mecanicos",
+        "datos": [{
+                "nombre": "El chivolín",
+                "nombreAcortado": "mecanicochivolin",
+                "url": "/servicio/mecanicochivolin",
+                "imagen": "assets/images/carousel/anunciaraqui-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Repara Carro",
+                "nombreAcortado": "mecanicorepara",
+                "url": "/servicio/mecanicorepara",
+                "imagen": "assets/images/carousel/anunciaraqui-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "transportes",
+        "nombre": "Transportes",
+        "icono": "fa fa-truck",
+        "colorLogo": "bg-amber bg-darken-2",
+        "color": "bg-amber bg-darken-2",
+        "colorTexto": "amber",
+        "titulo": "Transportes",
+        "url": "/servicios/transportes",
+        "datos": [{
+                "nombre": "Mudanza Don Otilio",
+                "nombreAcortado": "transportedonotilio",
+                "url": "/servicio/transportedonotilio",
+                "imagen": "assets/images/carousel/anunciaraqui-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "San José",
+                "nombreAcortado": "transportesanjose",
+                "url": "/servicio/transportesanjose",
+                "imagen": "assets/images/carousel/anunciaraqui-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "deportes",
+        "nombre": "Deportes",
+        "icono": "fa fa-male",
+        "colorLogo": "bg-info bg-darken-2",
+        "color": "bg-info info",
+        "colorTexto": "text-info",
+        "titulo": "Deportes",
+        "url": "/servicios/deportes",
+        "datos": [{
+                "nombre": "3 de Octubre",
+                "nombreAcortado": "entrena3deoctubre",
+                "url": "/servicio/entrena3deoctubre",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Entrenamiento Libertad",
+                "nombreAcortado": "entrenamientolibertad",
+                "url": "/servicio/entrenamientolibertad",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "entrenamiento",
+        "nombre": "Entrenamiento y Deportes",
+        "icono": "fa fa-male",
+        "colorLogo": "bg-info bg-darken-2",
+        "color": "bg-gradient-x-info",
+        "colorTexto": "info",
+        "titulo": "Entrenamiento",
+        "url": "/servicios/entrenamiento",
+        "datos": [{
+                "nombre": "3 de Octubre",
+                "nombreAcortado": "entrenamiento3deoctubre",
+                "url": "/servicio/entrenamiento3deoctubre",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Entrenamiento Libertad",
+                "nombreAcortado": "entrenamientolibertad",
+                "url": "/servicio/entrenamientolibertad",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "hoteles",
+        "nombre": "Hoteles",
+        "icono": "fa fa-bed",
+        "colorLogo": "bg-success bg-darken-2",
+        "color": "bg-gradient-x-success",
+        "colorTexto": "success",
+        "titulo": "Hoteles",
+        "url": "/servicios/Hoteles",
+        "datos": [{
+                "nombre": "Las estrellas",
+                "nombreAcortado": "hotellasestrellas",
+                "url": "/servicio/hotellasestrellas",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "El campanario",
+                "nombreAcortado": "hotelelcampanario",
+                "url": "/servicio/hotelelcampanario",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "papelerias",
+        "nombre": "Papelerías",
+        "icono": "fa fa-book",
+        "colorLogo": "bg-primary bg-darken-2",
+        "color": "bg-gradient-x-primary",
+        "colorTexto": "primary",
+        "titulo": "Papelerías",
+        "url": "/servicios/papelerias",
+        "datos": [{
+                "nombre": "Papelitodo",
+                "nombreAcortado": "papeleriapapelitodo",
+                "url": "/servicio/papeleriapapelitodo",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "La luna",
+                "nombreAcortado": "papelerialaluna",
+                "url": "/servicio/papelerialaluna",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "esteticas",
+        "nombre": "Estéticas",
+        "icono": "fa fa-scissors",
+        "colorLogo": "bg-gradient-y-pink",
+        "color": "bg-gradient-y-pink",
+        "colorTexto": "pink",
+        "titulo": "Estéticas",
+        "url": "/servicios/esteticas",
+        "datos": [{
+                "nombre": "La chica bonita",
+                "nombreAcortado": "esteticachicabonita",
+                "url": "/servicio/esteticachicabonita",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "La chica sexi",
+                "nombreAcortado": "esteticachicasexi",
+                "url": "/servicio/esteticachicasexi",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "fotografias",
+        "nombre": "Fotografías",
+        "icono": "fa fa-camera",
+        "colorLogo": "bg-purple bg-lighten-2",
+        "color": "bg-gradient-x-purple",
+        "colorTexto": "purple",
+        "titulo": "Fotografías",
+        "url": "/servicios/fotografia",
+        "datos": [{
+                "nombre": "Filmaciones nacho",
+                "nombreAcortado": "fotografiafilmacionesnacho",
+                "url": "/servicio/fotografiafilmacionesnacho",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Filmaciones Rodriguez",
+                "nombreAcortado": "filmacionesrodriguez",
+                "url": "/servicio/filmacionesrodriguez",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "videos",
+        "nombre": "Video",
+        "icono": "fa fa-camera",
+        "colorLogo": "bg-purple bg-lighten-2",
+        "color": "bg-gradient-x-purple",
+        "colorTexto": "purple",
+        "titulo": "Video",
+        "url": "/servicios/video",
+        "datos": [{
+                "nombre": "Filmaciones nacho",
+                "nombreAcortado": "fotografiafilmacionesnacho",
+                "url": "/servicio/fotografiafilmacionesnacho",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "Filmaciones Rodriguez",
+                "nombreAcortado": "filmacionesrodriguez",
+                "url": "/servicio/filmacionesrodriguez",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "bicicletas",
+        "nombre": "Bicicletas",
+        "icono": "fa fa-bicycle",
+        "colorLogo": "bg-cyan bg-lighten-1",
+        "color": "bg-gradient-x-cyan",
+        "colorTexto": "cyan",
+        "titulo": "Bicicletas",
+        "url": "/servicios/bicicletas",
+        "datos": [{
+                "nombre": "Bicitam",
+                "nombreAcortado": "bicicletasbicitam",
+                "url": "/servicio/bicicletasbicitam",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "BiciMiahua",
+                "nombreAcortado": "bicicletasbicimiahua",
+                "url": "/servicio/bicicletasbicimiahua",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "motocicletas",
+        "nombre": "Motocicletas",
+        "icono": "fa fa-motorcycle",
+        "colorLogo": "bg-teal bg-lighten-1",
+        "color": "bg-gradient-x-teal",
+        "colorTexto": "teal",
+        "titulo": "Motocicletas",
+        "url": "/servicios/motocicletas",
+        "datos": [{
+                "nombre": "Motorepara",
+                "nombreAcortado": "motocicletasmotorepara",
+                "url": "/servicio/motocicletasmotorepara",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "ReparaMoto",
+                "nombreAcortado": "motocicletasreparamoto",
+                "url": "/servicio/motocicletasreparamoto",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }, {
+        "tipo": "entretenimiento",
+        "nombre": "Entretenimiento",
+        "icono": "fa fa-gamepad",
+        "colorLogo": "bg-teal bg-accent-4",
+        "color": "bg-teal bg-accent-4",
+        "colorTexto": "teal",
+        "titulo": "Entrenamiento",
+        "url": "/servicios/entrenamiento",
+        "datos": [{
+                "nombre": "VideoJuego Diego",
+                "nombreAcortado": "entretenimientodiego",
+                "url": "/servicios/entretenimientodiego",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            },
+            {
+                "nombre": "BrincoLin",
+                "nombreAcortado": "entretenimientobrincolin",
+                "url": "/servicio/entretenimientobrincolin",
+                "imagen": "assets/images/carousel/servicio-min.jpg",
+                "telefono": "951 341 0841",
+                "facebook": "/infomiahua"
+
+            }
+        ]
+    }
+]
