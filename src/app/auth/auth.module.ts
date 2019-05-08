@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { PasswordComponent } from './password/password.component';
 
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,9 +17,7 @@ import { PasswordComponent } from './password/password.component';
     ReactiveFormsModule,
   ],
   declarations: [
-    RegisterComponent,
-    LoginComponent,
-    PasswordComponent
-  ]
+  ],
+  providers: [LoginComponent, RegisterComponent, PasswordComponent]
 })
 export class AuthModule { }

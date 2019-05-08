@@ -2,17 +2,24 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ContainerComponent } from './container/container.component';
 import { PanelComponent } from './panel/panel.component';
+import { PerfilComponent } from './perfil/perfil.component';
+import { AuthGuardService } from '../core/services/auth-guard.service';
 
 
 const routes: Routes = [{
   path: '',
   component: PanelComponent,
-  canActivate: [],
+  canActivate: [AuthGuardService],
   children: [
     {
       path: '',
       component: ContainerComponent,
-      canActivateChild: []
+      canActivateChild: [AuthGuardService]
+    },
+    {
+      path: 'perfil',
+      component: PerfilComponent,
+      canActivateChild: [AuthGuardService]
     }
   ]
 }];

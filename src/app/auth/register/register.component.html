@@ -13,11 +13,12 @@
 												<h6 class="card-subtitle line-on-side text-muted text-center font-small-3 pt-2">
 														<span>Bienvenido</span>
 												</h6>
-												</div>
+                        </div>
 												<div class="card-content">
-														<div class="card-body">
-																<form class="form-horizontal form-simple" name="form" [formGroup]="form" >
-																<fieldset class="form-group position-relative has-icon-left mb-1">
+                          <div class="card-body">
+                            <form class="form-horizontal form-simple" novalidate name="form" [formGroup]="form"  (ngSubmit)="onSubmit()">
+                              <strong>Valores: {{form.value | json}}</strong>
+                                <fieldset class="form-group position-relative has-icon-left mb-1">
 																		<input type="correo" formControlName="correo" [ngClass]="{'is-invalid': form.get('correo').touched && form.get('correo').invalid }" class="form-control form-control-lg" id="correo" placeholder="Correo electrónico"
 																		>
 																		<div class="form-control-position">
@@ -27,15 +28,36 @@
                                       <div *ngIf="!!form.get('correo').errors?.required">  <strong>El correo es obligatorio</strong> </div>
                                       <div *ngIf="!!form.get('correo').errors?.email">  <strong>Este correo no es valido</strong> </div>
 																		</div>
-																</fieldset>
+                                </fieldset>
+
+
+                                <fieldset class="form-group position-relative has-icon-left mb-1">
+                                    <select name="select" id="select" formControlName="role" required="" class="form-control" aria-invalid="false">
+                                        <option value="" disabled>Selecciona el tipo de usuario</option>
+                                        <option *ngFor="let item of roles" [ngValue]="item">Nivel {{item}}</option>
+
+                                    </select>
+
+																		<div class="form-control-position">
+																				<i class="ft-user"></i>
+																		</div>
+																		<div class="invalid-feedback" *ngIf="form.get('correo').touched && form.get('correo').invalid">
+                                      <div *ngIf="!!form.get('correo').errors?.required">  <strong>El correo es obligatorio</strong> </div>
+                                      <div *ngIf="!!form.get('correo').errors?.email">  <strong>Este correo no es valido</strong> </div>
+																		</div>
+                                </fieldset>
+
+
+
 																<fieldset class="form-group position-relative has-icon-left">
 																		<input type="password" formControlName="password" [ngClass]="{'is-invalid': form.get('password').touched && form.get('password').invalid}" class="form-control form-control-lg" id="password" placeholder="Contraseña"
 																		required>
 																		<div class="form-control-position">
 																		  <i class="fa fa-key"></i>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        <div>  <strong>La contraseña es obligatoria </strong> </div>
+                                    <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
+                                        <div *ngIf="!!form.get('password').errors.required">  <strong>La contraseña es obligatoria </strong> </div>
+                                        <div *ngIf="!!form.get('password').errors.minlength">  <strong>La contraseña debe de tener minimo 6 caracteres </strong> </div>
                                     </div>
 																</fieldset>
 																<fieldset class="form-group position-relative has-icon-left">
@@ -44,11 +66,13 @@
 																		<div class="form-control-position">
 																		  <i class="fa fa-key"></i>
                                     </div>
-                                    <div class="invalid-feedback">
-                                        <div>  <strong>Confirma tu contraseña para continuar</strong> </div>
+                                    <div *ngIf="form.get('passwordConfirm').touched && form.get('passwordConfirm').invalid" class="invalid-feedback">
+                                        <div *ngIf="!!form.get('passwordConfirm').errors.required">  <strong>Confirma tu contraseña para continuar</strong> </div>
+                                        <div  >  <strong>Las contraseñas no coinciden</strong> </div>
                                     </div>
 																</fieldset>
-																<button type="submit" class="btn btn-primary btn-lg btn-block"><i class="ft-unlock"></i> Registrar</button>
+                                <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-lg btn-block"> Registrar</button>
+                                <div *ngIf="!errorR"><strong>Error al registrarse, por favor revisa tus datos.</strong></div>
 																</form>
 														</div>
 														<p class="text-center">Tengo una cuenta <a [routerLink]="['/login']" class="card-link"> Identificate</a></p>

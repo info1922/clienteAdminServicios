@@ -17,28 +17,30 @@
               </div>
               <div class="card-content">
                 <div class="card-body">
-                  <form class="form-horizontal form-simple" action="index.html" novalidate>
-                    <!-- <fieldset class="form-group position-relative has-icon-left mb-1">
-                      <input type="text" class="form-control form-control-lg" id="user-name" placeholder="User Name">
-                      <div class="form-control-position">
-                        <i class="ft-user"></i>
-                      </div>
-                    </fieldset> -->
+                  <form class="form-horizontal form-simple" name="form" [formGroup]="form"  (ngSubmit)="onSubmit()" novalidate>
+                      <strong>Valores: {{form.value | json}}</strong>
                     <fieldset class="form-group position-relative has-icon-left mb-1">
-                      <input type="email" class="form-control form-control-lg" id="user-email" placeholder="Correo electrónico"
+                      <input type="email" formControlName="email" [ngClass]="{'is-invalid': form.get('email').touched && form.get('email').invalid }" class="form-control form-control-lg" id="email" placeholder="Correo electrónico"
                       required>
                       <div class="form-control-position">
                         <i class="ft-mail"></i>
                       </div>
+                      <div class="invalid-feedback" *ngIf="form.get('email').touched && form.get('email').invalid">
+                        <div *ngIf="!!form.get('email').errors?.required">  <strong>El email es obligatorio</strong> </div>
+                        <div *ngIf="!!form.get('email').errors?.email">  <strong>Este email no es valido</strong> </div>
+                      </div>
                     </fieldset>
                     <fieldset class="form-group position-relative has-icon-left">
-                      <input type="password" class="form-control form-control-lg" id="user-password" placeholder="Contraseña"
+                      <input type="password" formControlName="password" [ngClass]="{'is-invalid': form.get('password').touched && form.get('password').invalid}" class="form-control form-control-lg" id="user-password" placeholder="Contraseña"
                       required>
                       <div class="form-control-position">
                         <i class="fa fa-key"></i>
                       </div>
+                      <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
+                        <div *ngIf="!!form.get('password').errors.required">  <strong>La contraseña es obligatoria </strong> </div>
+                        <!-- <div *ngIf="!!form.get('password').errors.minlength">  <strong>La contraseña debe de tener minimo 6 caracteres </strong> </div> -->
+                    </div>
                     </fieldset>
-
                     <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="ft-unlock"></i> Ingresar</button>
                   </form>
                 </div>
