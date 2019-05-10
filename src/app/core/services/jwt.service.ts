@@ -18,4 +18,17 @@ export class JwtService {
   destroyToken() {
     window.localStorage.removeItem('jwt_token');
   }
+
+  setUser(user: string) {
+    window.localStorage.setItem('usuario',  JSON.stringify(user));
+  }
+
+  getUser() {
+    return window.localStorage.getItem('usuario');
+  }
+
+  destroyUser() {
+    window.localStorage.removeItem('usuario');
+  }
+
 }

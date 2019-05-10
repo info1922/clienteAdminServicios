@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from '../../core/services/websocket.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-panel',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./panel.component.css']
 })
 export class PanelComponent implements OnInit {
-
-  constructor() { }
+  loginMensanje: Subscription;
+  constructor( public wsService: WebsocketService) { }
 
   ngOnInit() {
+    /* this.loginMensanje = this.wsService.escucharLogin('loginuser').subscribe(msg => {
+      console.log('Mensaje del servidor login: ', msg);
+    }); */
   }
+
+
 
 }

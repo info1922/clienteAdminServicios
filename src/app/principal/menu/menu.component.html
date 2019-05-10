@@ -1,4 +1,4 @@
-<nav class="header-navbar navbar-expand-sm navbar navbar-with-menu navbar-light navbar-shadow border-grey border-lighten-2">
+<nav class="header-navbar navbar-expand-md navbar navbar-with-menu fixed-top navbar-light navbar-border container boxed-layout">
     <div class="navbar-wrapper">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
@@ -52,7 +52,9 @@
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <span class="avatar avatar-online">
                             <img src="../../../assets/images/portrait/small/avatar-s-1.png" alt="avatar"><i></i></span>
-                            <span class="user-name">{{this.perfilService.usuario.nombre}}</span>
+                            <!-- <span class="user-name">{{nombreU}}</span>
+                            <span class="user-name">nombre</span> -->
+                            {{this.authService.usuario.nombre}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" [routerLink]="['perfil']"><i class="ft-user"></i> Mi perfil</a>
                             <a class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Publicaciones</a>
@@ -66,40 +68,68 @@
     </div>
 </nav>
 
-<!-- <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
-    <div class="main-menu-content">
-
-        <ul *ngFor="let menu of _menuSidebar.menu" class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="navigation-header">
-                <span>{{menu.titulo}}</span>
-                <i class=" ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="General">
-                </i>
-            </li>
-            <li class="nav-item" *ngFor="let submenu of menu.submenu">
-                <a [routerLink]="[submenu.url]" routerLinkActive="active">
-                    <i class="{{submenu.icono}}"></i>
-                    <span class="menu-title" data-i18n="">
-                      {{ submenu.nombre}}
-                    </span>
-                </a>
-            </li>
+<div class="main-menu menu-fixed menu-light menu-accordion" data-scroll-to-active="true">
+  <div class="main-menu-content">
+    <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+      <li class=" navigation-header">
+        <span>General</span><i class=" ft-minus" data-toggle="tooltip" data-placement="right"
+        data-original-title="General"></i>
+      </li>
+      <li class=" nav-item"><a href="index.html"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span><span class="badge badge badge-primary badge-pill float-right mr-2">3</span></a>
+        <ul class="menu-content">
+          <li><a class="menu-item" href="dashboard-ecommerce.html">eCommerce</a>
+          </li>
+          <li><a class="menu-item" href="dashboard-analytics.html">Analytics</a>
+          </li>
+          <li><a class="menu-item" href="dashboard-fitness.html">Fitness</a>
+          </li>
         </ul>
-    </div>
-</div> -->
+      </li>
 
-<!-- <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
-    <div class="main-menu-content">
-        <ul *ngFor="let menu of _menuSidebar.menu" class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" navigation-header">
-                <span>{{menu.titulo}}</span>
-                <i class=" ft-minus" data-toggle="tooltip" data-placement="right" data-original-title="General"></i>
-            </li>
-            <li class=" nav-item" *ngFor="let submenu of menu.submenu">
-                <a [routerLink]="[submenu.url]" routerLinkActive="active">
-                    <i class="{{submenu.icono}} {{submenu.colorTexto}}"></i>
-                    <span class="menu-title" data-i18n="">{{ submenu.nombre}}</span>
-                </a>
-            </li>
+
+      <li class=" nav-item"><a href="#"><i class="ft-zap"></i><span class="menu-title" data-i18n="">Starter kit</span><span class="badge badge badge-danger badge-pill float-right mr-2">New</span></a>
+        <ul class="menu-content">
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-1-column.html">1 column</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-2-columns.html">2 columns</a>
+          </li>
+          <li><a class="menu-item" href="#">Content Det. Sidebar</a>
+            <ul class="menu-content">
+              <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-content-detached-left-sidebar.html">Detached left sidebar</a>
+              </li>
+              <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-content-detached-left-sticky-sidebar.html">Detached sticky left sidebar</a>
+              </li>
+              <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-content-detached-right-sidebar.html">Detached right sidebar</a>
+              </li>
+              <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-content-detached-right-sticky-sidebar.html">Detached sticky right sidebar</a>
+              </li>
+            </ul>
+          </li>
+          <li class="navigation-divider"></li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-fixed-navbar.html">Fixed navbar</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-fixed-navigation.html">Fixed navigation</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-fixed-navbar-navigation.html">Fixed navbar &amp; navigation</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-fixed-navbar-footer.html">Fixed navbar &amp; footer</a>
+          </li>
+          <li class="navigation-divider"></li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-fixed.html">Fixed layout</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-boxed.html">Boxed layout</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-static.html">Static layout</a>
+          </li>
+          <li class="navigation-divider"></li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-light.html">Light layout</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-dark.html">Dark layout</a>
+          </li>
+          <li><a class="menu-item" href="../../../starter-kit/ltr/vertical-menu-template-light/layout-semi-dark.html">Semi dark layout</a>
+          </li>
         </ul>
-    </div>
-</div> -->
+      </li>
+    </ul>
+  </div>
+</div>

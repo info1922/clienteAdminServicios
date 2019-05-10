@@ -5,6 +5,7 @@ import { AuthService } from '../../core/services/auth.service';
 import { LoginComponent } from '../../auth/login/login.component';
 import { MenuService } from './menu.service';
 import { PerfilService } from '../perfil/perfil.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,18 +15,24 @@ import { PerfilService } from '../perfil/perfil.service';
 })
 export class MenuComponent implements OnInit {
 
-
+  mensaje: Subscription;
   constructor(
-    public jwtService: JwtService,
     public router: Router,
     public authService: AuthService,
-    public menuService: MenuService,
-    public login: LoginComponent,
-    public perfilService: PerfilService) {
+    public perfilService: PerfilService
+  ) {
+
+
     }
 
     ngOnInit() {
+
+      /* this.mensaje = this.perfilService.escucharcambios().subscribe(msg => {
+        this.us = msg;
+        console.log(this.us.nombre);
+      }); */
     }
+
 
   salir() {
     this.authService.logout();

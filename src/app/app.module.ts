@@ -1,10 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+// Sockets
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: environment.wsURL, options: {} };
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
-import { PrincipalModule } from './principal/principal.module';
 import { CoreModule } from './core/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
@@ -13,6 +16,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from './core/services/http-interceptor.service';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,6 +28,7 @@ import { RegisterComponent } from './auth/register/register.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
+    SocketIoModule.forRoot(config),
     AppRoutingModule,
     AuthModule,
     CoreModule,

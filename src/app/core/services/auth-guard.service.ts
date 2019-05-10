@@ -22,16 +22,12 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
       route: ActivatedRouteSnapshot,
       state: RouterStateSnapshot): Observable<boolean> {
       if (this.jwtService.getToken()) {
-        // console.log(this.jwtService.getToken());
-      /*   console.log('Paso el guard');
-        console.log('Token: ', route.queryParams); */
         return of(true);
       }
       const token = route.queryParamMap.get('token');
       // tslint:disable-next-line:no-debugger
-      // debugger;
+
       if (token) {
-        /* console.log('El token: ', token); */
         return this.authService.isAuthenticated(token).pipe(
           map((authenticated) => {
             console.log(authenticated);

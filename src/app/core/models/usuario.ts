@@ -22,6 +22,20 @@ export class Usuario {
       public email: string,
       public role: string,
       public nombre: string,
-      public password: string,
+      public favoritos: any,
+      public nese: any,
+      public anuncios: any,
+      public google?: any,
+      public password?: string,
+      public id?: string
+  ) {}
+}
+
+export class Registro {
+  constructor(
+      public email: string,
+      public role: string,
+      public nombre: string,
+      public password: string
   ) {}
 }

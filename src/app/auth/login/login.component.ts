@@ -5,6 +5,8 @@ import { AuthService } from '../../core/services/auth.service';
 import { JwtService } from '../../core/services/jwt.service';
 import { ToastrService } from 'ngx-toastr';
 import { PerfilService } from '../../principal/perfil/perfil.service';
+import { WebsocketService } from '../../core/services/websocket.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,6 +16,8 @@ import { PerfilService } from '../../principal/perfil/perfil.service';
 })
 export class LoginComponent implements OnInit {
 
+  loginc: Subscription;
+  us;
     form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required, Validators.minLength(6)]),
@@ -21,28 +25,35 @@ export class LoginComponent implements OnInit {
     // validators: this.MatchPassword
     });
 
-/*     usuario: any; */
-
   constructor(
     public authService: AuthService,
     public jwtService: JwtService,
     public router: Router,
     private toastr: ToastrService,
-    public perfilService: PerfilService) { }
+    public perfilService: PerfilService,
+    public wsService: WebsocketService) { }
 
   ngOnInit() {
+
   }
 
   onSubmit() {
-    console.log(this.form.value);
+
+    if (this.form.invalid) {
+      return;
+    }
+
+
     this.authService.login(this.form.value)
       .subscribe((data: any ) => {
-          console.log(data);
-          this.jwtService.setToken(data.token);
-          this.perfilService.guardarStorage(data.user);
-          // localStorage.setItem('usuario', JSON.stringify(data.user));
+
           this.router.navigate(['principal']);
-      }, err => {
+
+        // Mandamos el token al servidor
+          this.wsService.loginWs(data);
+
+          /* this.wsService.emitir('loginlogin', this.form.value); */
+        }, err => {
         this.toastr.error('Correo o contraseña incorrecta', ' ' , {positionClass: 'toast-bottom-center'});
         console.error(err);
       });

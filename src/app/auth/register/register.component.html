@@ -16,7 +16,7 @@
                         </div>
 												<div class="card-content">
                           <div class="card-body">
-                            <form class="form-horizontal form-simple" novalidate name="form" [formGroup]="form"  (ngSubmit)="onSubmit()">
+                            <form ngNativeValidate class="form-horizontal form-simple" novalidate name="form" [formGroup]="form"  (ngSubmit)="onSubmit()">
                               <strong>Valores: {{form.value | json}}</strong>
                                 <fieldset class="form-group position-relative has-icon-left mb-1">
 																		<input type="correo" formControlName="correo" [ngClass]="{'is-invalid': form.get('correo').touched && form.get('correo').invalid }" class="form-control form-control-lg" id="correo" placeholder="Correo electrónico"
@@ -68,8 +68,9 @@
                                     </div>
                                     <div *ngIf="form.get('passwordConfirm').touched && form.get('passwordConfirm').invalid" class="invalid-feedback">
                                         <div *ngIf="!!form.get('passwordConfirm').errors.required">  <strong>Confirma tu contraseña para continuar</strong> </div>
-                                        <div  >  <strong>Las contraseñas no coinciden</strong> </div>
-                                    </div>
+                                      </div>
+
+                                    <!--   <div *ngIf="!!form.errors?.sonIguales && !form.pristine">  <strong>Las contraseñas no coinciden</strong> </div> -->
 																</fieldset>
                                 <button type="submit" [disabled]="!form.valid" class="btn btn-primary btn-lg btn-block"> Registrar</button>
                                 <div *ngIf="!errorR"><strong>Error al registrarse, por favor revisa tus datos.</strong></div>

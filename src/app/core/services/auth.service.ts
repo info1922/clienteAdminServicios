@@ -1,46 +1,75 @@
+import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { User, LoginRsp, SignupRsp, Usuario } from '../models/usuario';
+import { User, LoginRsp, SignupRsp, Usuario, Registro } from '../models/usuario';
 import { Observable } from 'rxjs';
 import { JwtService } from './jwt.service';
 import { environment } from '../../../environments/environment';
-import { map, catchError } from 'rxjs/operators';
 import { error } from 'util';
 import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
+import { Socket } from 'ngx-socket-io';
+import { WebsocketService } from './websocket.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  token: any;
+  usuario: any;
+
   constructor(
     private httpClient: HttpClient,
     private jwtservice: JwtService,
-    private router: Router) {
+    private router: Router,
+    private wsService: WebsocketService
+  ) {
 
     /* console.log('Esta en el auth'); */
+    this.cargarStorage();
   }
 
-  token: any;
-  usuario: any;
-  isLogin: any = false;
-  registro(body: Usuario): Observable<SignupRsp> {
-    return this.httpClient.post<SignupRsp>(`${environment.api_url}/user/signup`, body);
+  cargarStorage() {
+    if (this.jwtservice.getToken()) {
+      this.token = this.jwtservice.getToken();
+      this.usuario = JSON.parse(this.jwtservice.getUser());
+    } else {
+      this.token = '';
+      this.usuario = null;
+    }
   }
+
+  guardarStorage(token: string, usuario: any) {
+      this.jwtservice.setToken(token);
+      this.jwtservice.setUser(usuario);
+
+      this.usuario = usuario;
+      this.token = token;
+  }
+
+
+  registro(body: Registro) {
+    return this.httpClient.post(`${environment.api_url}/user/signup`, body).pipe(map((res: any) => {
+      // Mensaje de alerta
+      console.log('Usuario creado');
+      return res.usuario;
+    }));
+  }
+
+
 
   login(body: User): Observable<LoginRsp> {
     return this.httpClient.post<LoginRsp>(`${environment.api_url}/user/login`, body)
     .pipe(map((res: any) => {
-     /*  console.log('Respuesta: ', res); */
+      this.guardarStorage(res.token, res.user);
       this.token = [res.token];
-      this.isLogin = true;
       return res;
     }));
   }
 
   isAuthenticated(token): Observable<boolean> {
-    console.log('El token: ', token);
+    // console.log('El token: ', token);
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -51,32 +80,12 @@ export class AuthService {
     return this.httpClient.get<boolean>(`${environment.api_url}/user/login`, httpOptions);
   }
 
-  issLogin() {
-    return this.isLogin;
-  }
-
-  setUser(user) {
-    const usr = JSON.stringify(user);
-    localStorage.setItem('usuario', usr);
-  }
-
-  getUser() {
-    return localStorage.getItem('usuario');
-  }
-
-  /* getUsuarioActual() {
-    const usrstring = localStorage.getItem('usuario');
-    if (!isNullOrUndefined(usrstring)) {
-      const user = JSON.parse(usrstring);
-      return user;
-    } else {
-      return null;
-    }
-  } */
 
   logout() {
+    this.usuario = null,
+    this.token = '';
     this.jwtservice.destroyToken();
-    localStorage.removeItem('usuario');
+    this.jwtservice.destroyUser();
     this.router.navigate(['login']);
   }
 
