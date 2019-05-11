@@ -34,6 +34,14 @@ export class AuthService {
     if (this.jwtservice.getToken()) {
       this.token = this.jwtservice.getToken();
       this.usuario = JSON.parse(this.jwtservice.getUser());
+
+      const data: any = {
+        token: this.token,
+        user: this.usuario
+      };
+
+      this.wsService.loginWs(data);
+
     } else {
       this.token = '';
       this.usuario = null;
@@ -86,6 +94,7 @@ export class AuthService {
     this.token = '';
     this.jwtservice.destroyToken();
     this.jwtservice.destroyUser();
+    this.wsService.logoutWs();
     this.router.navigate(['login']);
   }
 

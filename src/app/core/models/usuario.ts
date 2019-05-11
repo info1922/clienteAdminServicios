@@ -1,6 +1,6 @@
 export class User {
   email: string;
-  password: string;
+  password?: string;
 }
 
 export interface LoginRsp {

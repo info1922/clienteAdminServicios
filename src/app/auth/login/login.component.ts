@@ -31,7 +31,9 @@ export class LoginComponent implements OnInit {
     public router: Router,
     private toastr: ToastrService,
     public perfilService: PerfilService,
-    public wsService: WebsocketService) { }
+    public wsService: WebsocketService) {
+      /* this.wsService.checkStatus(); */
+    }
 
   ngOnInit() {
 
@@ -47,10 +49,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.form.value)
       .subscribe((data: any ) => {
 
-          this.router.navigate(['principal']);
-
         // Mandamos el token al servidor
-          this.wsService.loginWs(data);
+        this.wsService.loginWs(data)
+        .then(() => {
+            this.router.navigate(['principal']);
+          });
 
           /* this.wsService.emitir('loginlogin', this.form.value); */
         }, err => {
