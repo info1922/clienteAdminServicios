@@ -41,7 +41,7 @@ export class PerfilService {
       .pipe(map( (resp: any) => {
         const token = this.authService.token;
         const data = {
-          token: token[0],
+          token: `${token}`,
           user: resp.usuario
         };
         console.log('Data a actualizar: ', data);

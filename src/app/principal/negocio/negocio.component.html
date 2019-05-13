@@ -1,0 +1,65 @@
+<div class="card">
+    <div class="card-header">
+        <h4 class="card-title text-center"><img src="assets/images/negocio/grocery.png" class="img-lg"> Negocio</h4>
+    </div>
+    <div class="card-content">
+        <div class="card-body">
+            <div class="card-text">
+                <form class="form" name="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <div class="form-body">
+                        <strong>Valores: {{form.value | json}}</strong>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="projectinput1">Nombre</label>
+                                    <input type="text" id="nombre" name="nombre" formControlName="nombre" class="form-control" placeholder="Nombre">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                <label for="projectinput5">Categoria</label>
+                                <select id="categoria" name="categoria" formControlName="categoria" class="form-control">
+                                <option value="" disabled>Seleccione una categoría</option>
+                                <option *ngFor="let item of categoria" [ngValue]="item">{{item}}</option>
+
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="projectinput3">Dirección</label>
+                                    <input type="text" id="direccion" name="direccion" formControlName="direccion" class="form-control" placeholder="Dirección">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="projectinput4">Telefono</label>
+                                    <input type="text" id="telefono" name="telefono" formControlName="telefono" class="form-control" placeholder="Telefono">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="projectinput4">Facebook</label>
+                                    <input type="text" id="facebook" name="facebook" formControlName="facebook"  class="form-control" placeholder="Facebook">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-warning mr-1">
+                            <i class="ft-x"></i> Limpiar
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fa fa-check-square-o"></i> Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

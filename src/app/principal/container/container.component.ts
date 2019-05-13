@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { JwtService } from '../../core/services/jwt.service';
 
 @Component({
   selector: 'app-container',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContainerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public jwtService: JwtService) { }
 
-  ngOnInit() {
-  }
+    usuarioTipo: any;
+    ngOnInit() {
+        this.usuarioTipo = this.permiso();
+    }
+
+    permiso() {
+        const usuario = JSON.parse(this.jwtService.getUser());
+        return usuario.role;
+    }
 
 }

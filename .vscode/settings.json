@@ -6,6 +6,6 @@
   "editor.fontSize": 15,
   "workbench.colorTheme": "One Dark Pro Bold",
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "editor.tabSize": 4,
-  "editor.detectIndentation": false,
+"editor.tabSize": 4,
+"editor.smoothScrolling": true,
 }
