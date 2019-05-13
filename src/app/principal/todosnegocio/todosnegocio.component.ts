@@ -38,37 +38,25 @@ export class TodosnegocioComponent implements OnInit {
         this.wsService.escuchar('negocios')
             .subscribe((data: any) => {
                 this.negocios = data;
-               /*  console.log('Nueva data: ', data); */
+                console.log('Nueva data: ', data);
             });
     }
 
     Negocios() {
         this.todosNegocios.obtenerNegocios().subscribe((resp: any) => {
             this.negocios = resp;
-            this.admins = [];
-
-            // tslint:disable-next-line:prefer-for-of
-            /* for (const iterator of resp) {
-                for (const iterator2 of iterator.admin) {
-                    this.admins.push(iterator2);
-                }
-            } */
-            // tslint:disable-next-line:prefer-for-of
-            /* for (let index = 0; index < this.negocios.length; index++) {
-                const element = this.negocios[index].admin;
-                console.log(element);
-                this.admins.push(element);
-
-            } */
-
-            /* console.log('Adminst: ', this.admins); */
-
-
-           /*  console.log(this.admins); */
-           /*  this.admins.push(this.negocios); */
-            /* console.log('Negocios: ', this.negocios[0].admin.role); */
-            /* console.log('Admins :', this.admins); */
+            console.log('Negocios: ', this.negocios);
         });
+    }
+
+    eliminarItem(negocio: any) {
+        const body = {
+            idNegocio: negocio._id,
+            idUser: negocio.admin._id
+        };
+
+        this.todosNegocios.eliminarNegocio(negocio).subscribe();
+        console.log('Negocio seleccionado: ', body);
     }
 
 

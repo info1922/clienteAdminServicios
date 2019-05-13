@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { Negocio } from '../../core/models/negocio';
 import { JwtService } from '../../core/services/jwt.service';
@@ -22,6 +22,8 @@ export class NegocioService {
       // tslint:disable-next-line:object-literal-key-quotes
       Authorization: `bearer ${this.jwtService.getToken()}`
     });
+
+
     nuevoNegocio(body: Negocio) {
         const url = `${environment.api_url}/nese`;
 

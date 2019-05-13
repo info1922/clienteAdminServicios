@@ -12,6 +12,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpInterceptorService } from '../core/services/http-interceptor.service';
 import { NegocioComponent } from './negocio/negocio.component';
 import { TodosnegocioComponent } from './todosnegocio/todosnegocio.component';
+import { FavoritosComponent } from './favoritos/favoritos.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,10 @@ import { TodosnegocioComponent } from './todosnegocio/todosnegocio.component';
     PrincipalRoutingModule
   ],
   exports: [],
-  declarations: [PanelComponent, ContainerComponent, MenuComponent, PerfilComponent, NegocioComponent, TodosnegocioComponent],
+  declarations: [
+      PanelComponent,
+      ContainerComponent,
+      MenuComponent, PerfilComponent, NegocioComponent, TodosnegocioComponent, FavoritosComponent],
   providers: [MenuService]
 })
 export class PrincipalModule { }

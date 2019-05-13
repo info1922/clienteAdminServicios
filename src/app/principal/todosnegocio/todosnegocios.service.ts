@@ -23,6 +23,14 @@ export class TodosnegociosService {
         }));
     }
 
+    eliminarNegocio(body: any) {
+        const url = `${environment.api_url}/nese/${body._id}/${body.admin._id}`;
+
+        return this.httpClient.delete(url).pipe(map((resp: any) => {
+            console.log('Negocio eliminado: ', resp);
+        }));
+    }
+
 
 
 }

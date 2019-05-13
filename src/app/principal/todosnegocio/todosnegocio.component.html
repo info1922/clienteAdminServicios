@@ -25,10 +25,10 @@
 
 
                                             <div class="media-body text-left" *ngIf="this.usuario.role === 'super'">
-                                                <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1">{{this.usuario.role}} <i class="fa fa-trash"></i></button>
+                                                <button type="button" (click)="eliminarItem(negocio)" class="btn btn-dark btn-min-width mr-1 mb-1">{{this.usuario.role}} <i class="fa fa-trash"></i></button>
                                             </div>
                                             <div class="media-body text-left" *ngIf="this.usuario._id == negocio.admin._id">
-                                                <button type="button" class="btn btn-dark btn-min-width mr-1 mb-1">{{negocio.admin.role}} <i class="fa fa-trash"></i></button>
+                                                <button type="button" (click)="eliminarItem(negocio)" class="btn btn-dark btn-min-width mr-1 mb-1">{{negocio.admin.role}} <i class="fa fa-trash"></i></button>
                                             </div>
                                             <div class="media-body text-left" *ngIf="this.usuario._id != negocio.admin._id">
                                                 <button type="button" class="btn btn-pink btn-min-width mr-1 mb-1">{{negocio.admin.role}} <i class="fa fa-heart"></i></button>
