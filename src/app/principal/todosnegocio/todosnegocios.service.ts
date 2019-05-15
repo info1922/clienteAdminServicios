@@ -31,6 +31,17 @@ export class TodosnegociosService {
         }));
     }
 
+    agregarFavorito(id: any) {
+        /* console.log('Id del negocio a enviar', id); */
+        const url = `${environment.api_url}/user/favoritosu`;
+        const body: any = {
+            id
+        };
+        return this.httpClient.put(url, body).pipe(map((resp: any) => {
+            /* console.log('Negocio agregado a favoritos: ', resp); */
+        }));
+    }
+
 
 
 }

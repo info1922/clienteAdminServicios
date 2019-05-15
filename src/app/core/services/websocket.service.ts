@@ -55,7 +55,7 @@ export class WebsocketService {
 
         return new Promise((resol, reject) =>  {
             this.emitir('configurar-usuario', {data}, (resp: any) => {
-                console.log('La data ', data);
+                /* console.log('La data ', data); */
                 /* his.usuario = new User(data.user.nombre); */
             /*  this.guardarUsuarioLocal(); */
                 resol();
@@ -71,14 +71,16 @@ export class WebsocketService {
         // this.jwtService.destroyUser();
         const data = {
             user:  {
-                nombre: 'sin-nombre'
+                nombre: 'sin-nombre',
+                _id: 'sin-id'
             },
-            token: 'sin-token'
+            token: 'sin-token',
         };
 
         const payload = {
             data,
-            token: data.token
+            token: data.token,
+            _id: data.user._id
         };
     /*  console.log('Payload: ', payload); */
         this.emitir('configurar-usuario', payload, () => {});
@@ -98,9 +100,10 @@ cargarUsuarioLocal() {
 
 /** Eventos recibidos por el cliente  desde el servidor */
     escuchar(evento: string) {
-        console.log('Escuchar evento del servidor  ↪ cliente');
+        /* console.log('Escuchar evento del servidor  ↪ cliente'); */
         return this.socket.fromEvent(evento);
     }
+
     escucharLogin(evento: string) {
         /* console.log('Escucha evento login'); */
         return this.socket.fromEvent(evento);

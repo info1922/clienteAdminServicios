@@ -22,9 +22,9 @@ export class TodosnegocioComponent implements OnInit {
         public todosNegocios: TodosnegociosService,
         public wsService: WebsocketService,
         public jwtService: JwtService) {
-            // this.Negocios();
+
             this.usuario = JSON.parse(this.jwtService.getUser());
-            console.log(this.usuario._id);
+            /* console.log(this.usuario._id); */
         }
 
     ngOnInit() {
@@ -38,14 +38,14 @@ export class TodosnegocioComponent implements OnInit {
         this.wsService.escuchar('negocios')
             .subscribe((data: any) => {
                 this.negocios = data;
-                console.log('Nueva data: ', data);
+                /* console.log('Nueva data: ', data); */
             });
     }
 
     Negocios() {
         this.todosNegocios.obtenerNegocios().subscribe((resp: any) => {
             this.negocios = resp;
-            console.log('Negocios: ', this.negocios);
+            /* console.log('Negocios: ', this.negocios); */
         });
     }
 
@@ -56,7 +56,12 @@ export class TodosnegocioComponent implements OnInit {
         };
 
         this.todosNegocios.eliminarNegocio(negocio).subscribe();
-        console.log('Negocio seleccionado: ', body);
+        /* console.log('Negocio seleccionado: ', body); */
+    }
+
+    agregarFavorito(negocio: any) {
+        /* console.log('Negocio seleccionado: ', negocio._id); */
+        this.todosNegocios.agregarFavorito(negocio._id).subscribe();
     }
 
 

@@ -38,7 +38,7 @@ export class NegocioComponent implements OnInit {
             this.form.value.telefono,
             this.form.value.facebook,
         );
-        console.log('Datos del negocio: ', negocio);
+        /* console.log('Datos del negocio: ', negocio); */
 
         this.negocioService.nuevoNegocio(negocio).subscribe();
     }

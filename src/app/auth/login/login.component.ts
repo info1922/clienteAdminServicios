@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
       .subscribe((data: any ) => {
 
         // Mandamos el token al servidor
+        console.log('La data del usaurio: ', data);
         this.wsService.loginWs(data)
         .then(() => {
             this.router.navigate(['principal']);
