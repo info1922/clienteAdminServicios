@@ -43,4 +43,10 @@ export class FavoritosComponent implements OnInit {
         });
     }
 
+    quitFavorito(id: any) {
+        this.favService.quitarFavorito(id).subscribe((res: any) => {
+            // this.getFavoritos();
+        });
+    }
+
 }

@@ -5,6 +5,7 @@ import { NegocioService } from '../negocio/negocio.service';
 import { Subscription } from 'rxjs';
 import { JwtService } from '../../core/services/jwt.service';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { FavoritosService } from '../favoritos/favoritos.service';
 
 @Component({
     selector: 'app-todosnegocio',
@@ -21,10 +22,11 @@ export class TodosnegocioComponent implements OnInit {
         public nego: NegocioService,
         public todosNegocios: TodosnegociosService,
         public wsService: WebsocketService,
-        public jwtService: JwtService) {
+        public jwtService: JwtService,
+        public favService: FavoritosService) {
 
             this.usuario = JSON.parse(this.jwtService.getUser());
-            /* console.log(this.usuario._id); */
+            console.log(this.usuario._id);
         }
 
     ngOnInit() {
@@ -45,7 +47,7 @@ export class TodosnegocioComponent implements OnInit {
     Negocios() {
         this.todosNegocios.obtenerNegocios().subscribe((resp: any) => {
             this.negocios = resp;
-            /* console.log('Negocios: ', this.negocios); */
+            console.log('Negocios: ', this.negocios);
         });
     }
 
@@ -62,6 +64,13 @@ export class TodosnegocioComponent implements OnInit {
     agregarFavorito(negocio: any) {
         /* console.log('Negocio seleccionado: ', negocio._id); */
         this.todosNegocios.agregarFavorito(negocio._id).subscribe();
+    }
+
+    quitFavorito(id: any) {
+        this.favService.quitarFavorito(id).subscribe((res: any) => {
+            /* console.log('Resultado: ', res); */
+            // this.escucharSocket();
+        });
     }
 
 

@@ -26,6 +26,13 @@ export class FavoritosService {
         return this.wsService.escuchar('favoritos-privado');
     }
 
+    quitarFavorito(id: string) {
+        const url = `${environment.api_url}/user/favdelete/${id}`;
+        return this.httpClient.delete(url).pipe(map((resp: any) => {
+            return resp;
+        }));
+    }
+
 
 
 }
