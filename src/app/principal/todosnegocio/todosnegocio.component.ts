@@ -13,11 +13,12 @@ import { FavoritosService } from '../favoritos/favoritos.service';
     styleUrls: ['./todosnegocio.component.css'],
 })
 export class TodosnegocioComponent implements OnInit {
-
+    estatusG = undefined;
     negocios: any;
     admins: any [] = [];
     usuario: any;
     superusuario = 'super';
+    favoritosEnUsuario: any;
     constructor(
         public nego: NegocioService,
         public todosNegocios: TodosnegociosService,
@@ -25,14 +26,16 @@ export class TodosnegocioComponent implements OnInit {
         public jwtService: JwtService,
         public favService: FavoritosService) {
 
-            this.usuario = JSON.parse(this.jwtService.getUser());
-            console.log(this.usuario._id);
+            /* console.log(this.usuario._id); */
         }
 
     ngOnInit() {
         // this.negocios = this.nego.negocios;
+        this.usuario = JSON.parse(this.jwtService.getUser());
         this.Negocios();
         this.escucharSocket();
+        console.log('Usuario en ngOninit: ', this.usuario);
+
 
     }
 
@@ -40,14 +43,13 @@ export class TodosnegocioComponent implements OnInit {
         this.wsService.escuchar('negocios')
             .subscribe((data: any) => {
                 this.negocios = data;
-                /* console.log('Nueva data: ', data); */
+
             });
     }
 
     Negocios() {
         this.todosNegocios.obtenerNegocios().subscribe((resp: any) => {
             this.negocios = resp;
-            console.log('Negocios: ', this.negocios);
         });
     }
 
@@ -61,15 +63,34 @@ export class TodosnegocioComponent implements OnInit {
         /* console.log('Negocio seleccionado: ', body); */
     }
 
-    agregarFavorito(negocio: any) {
-        /* console.log('Negocio seleccionado: ', negocio._id); */
-        this.todosNegocios.agregarFavorito(negocio._id).subscribe();
+    agregarFavorito(negocio: any, index: any) {
+        this.Negocios();
+        const idU = this.usuario._id;
+        console.log({negocio, index, idU});
+        const verificaU = negocio.favoritesUser.find(id =>  id === this.usuario._id);
+        console.log(verificaU);
+
+
+        const es = [];
+
+        this.todosNegocios.agregarFavorito(negocio._id).subscribe((res: any) => {
+            console.log(res);
+            this.Negocios();
+
+        });
     }
+
+
 
     quitFavorito(id: any) {
         this.favService.quitarFavorito(id).subscribe((res: any) => {
-            /* console.log('Resultado: ', res); */
-            // this.escucharSocket();
+            this.usuario = JSON.parse(this.jwtService.getUser());
+            this.Negocios();
+        });
+    }
+
+    quitFavoritoFavoritosComponente(id: any) {
+        this.favService.quitarFavorito(id).subscribe((res: any) => {
         });
     }
 

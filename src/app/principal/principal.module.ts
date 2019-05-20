@@ -27,6 +27,6 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
       PanelComponent,
       ContainerComponent,
       MenuComponent, PerfilComponent, NegocioComponent, TodosnegocioComponent, FavoritosComponent],
-  providers: [MenuService]
+  providers: [MenuService, TodosnegocioComponent]
 })
 export class PrincipalModule { }

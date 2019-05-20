@@ -17,9 +17,9 @@ export class WebsocketService {
         private  socket: Socket,
         public jwtService: JwtService,
         public route: Router ) {
-        /*   this.cargarUsuarioLocal(); */
+
             this.checkStatus();
-            /* this.usuario = this.jwtService.getUser(); */
+
     }
 
     checkStatus() {
@@ -27,16 +27,15 @@ export class WebsocketService {
         const user = JSON.parse(this.jwtService.getUser());
         this.socket.on('connect', () => {
             console.log('conectado al servidor');
-            /* this.loginWs({token, user}); */
             this.socketStatus = true;
-            /* this.ca */
         });
 
         this.socket.on('disconnect', () => {
             console.log('Desconectado del servidor');
-            this.jwtService.destroyToken();
+            /* this.jwtService.destroyToken();
             this.jwtService.destroyUser();
-            this.route.navigate(['login']);
+            this.route.navigate(['login']); */
+            window.location.reload();
             this.socketStatus = false;
         });
 
@@ -50,25 +49,16 @@ export class WebsocketService {
         console.log('Emitiendo mensaje del cliente ↪ servidor');
         this.socket.emit(evento, payload, callback);
     }
-    loginWs(data: any) {
-        /* console.log('Configurando', data); */
 
+    loginWs(data: any) {
         return new Promise((resol, reject) =>  {
             this.emitir('configurar-usuario', {data}, (resp: any) => {
-                /* console.log('La data ', data); */
-                /* his.usuario = new User(data.user.nombre); */
-            /*  this.guardarUsuarioLocal(); */
                 resol();
             });
         });
-
-
     }
 
-
     logoutWs() {
-        // this.usuario = null;
-        // this.jwtService.destroyUser();
         const data = {
             user:  {
                 nombre: 'sin-nombre',
@@ -82,34 +72,16 @@ export class WebsocketService {
             token: data.token,
             _id: data.user._id
         };
-    /*  console.log('Payload: ', payload); */
         this.emitir('configurar-usuario', payload, () => {});
     }
 
-/* guardarUsuarioLocal() {
-    localStorage.setItem('usuario', JSON.stringify(this.usuario));
-}
-
-cargarUsuarioLocal() {
-    if (localStorage.getItem('usuario')) {
-        this.usuario = JSON.parse(localStorage.getItem('usuario'));
-    }
-} */
-/** **************************** */
-
-
 /** Eventos recibidos por el cliente  desde el servidor */
     escuchar(evento: string) {
-        /* console.log('Escuchar evento del servidor  ↪ cliente'); */
         return this.socket.fromEvent(evento);
     }
 
     escucharLogin(evento: string) {
-        /* console.log('Escucha evento login'); */
         return this.socket.fromEvent(evento);
     }
-/** *************************************************** */
-
-
 
 }

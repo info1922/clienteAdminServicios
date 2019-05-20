@@ -55,6 +55,7 @@
                             <!-- <span class="user-name">{{nombreU}}</span>
                             <span class="user-name">nombre</span> -->
                             {{this.authService.usuario.nombre}}
+                            {{this.authService.usuario._id}}
                         </a>
                         <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" [routerLink]="['perfil']"><i class="ft-user"></i> Mi perfil</a>
                             <a class="dropdown-item" href="user-cards.html"><i class="ft-check-square"></i> Publicaciones</a>
@@ -68,7 +69,7 @@
     </div>
 </nav>
 
-<div class="main-menu menu-fixed menu-light menu-accordion" data-scroll-to-active="true">
+<!-- <div class="main-menu menu-fixed menu-light menu-accordion" data-scroll-to-active="true">
   <div class="main-menu-content">
     <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
       <li class=" navigation-header">
@@ -132,4 +133,4 @@
       </li>
     </ul>
   </div>
-</div>
+</div> -->
