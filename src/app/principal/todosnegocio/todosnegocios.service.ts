@@ -12,6 +12,7 @@ import { AuthService } from '../../core/services/auth.service';
 export class TodosnegociosService {
 
     negocios: any;
+    usuario = JSON.parse(this.jwtService.getUser());
     constructor(
         public httpClient: HttpClient,
         public jwtService: JwtService,
@@ -22,16 +23,15 @@ export class TodosnegociosService {
     obtenerNegocios() {
         const url = `${environment.api_url}/nese`;
         return this.httpClient.get(url).pipe(map((resp: any) => {
-            /* console.log('Negocios registrados: ', resp); */
             return resp.neseList;
         }));
     }
 
     eliminarNegocio(body: any) {
-        const url = `${environment.api_url}/nese/${body._id}/${body.admin._id}`;
+        const url = `${environment.api_url}/nese/${body._id}/${this.usuario._id}`;
 
         return this.httpClient.delete(url).pipe(map((resp: any) => {
-            /* console.log('Negocio eliminado: ', resp); */
+            console.log('Negocio eliminado: ', resp);
         }));
     }
 

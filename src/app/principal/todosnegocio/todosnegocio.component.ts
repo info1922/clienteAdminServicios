@@ -55,13 +55,7 @@ export class TodosnegocioComponent implements OnInit {
     }
 
     eliminarItem(negocio: any) {
-        const body = {
-            idNegocio: negocio._id,
-            idUser: negocio.admin._id
-        };
-
         this.todosNegocios.eliminarNegocio(negocio).subscribe();
-        /* console.log('Negocio seleccionado: ', body); */
     }
 
     agregarFavorito(negocio: any, index: any) {
