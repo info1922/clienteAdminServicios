@@ -58,7 +58,7 @@
                                                 <div *ngIf="negocio._id == favorite && usuario._id == favoritosuser">
                                                     <!-- Está en favoritos del usuario -->
                                                     <button type="button" (click)="quitFavorito(negocio._id)" class="btn btn-icon btn-success mr-1">
-                                                        <i class="fa fa-trash-o"></i> DELL favoritos
+                                                        <i class="fa fa-trash-o"></i>
                                                     </button>
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@
                                             <div *ngIf="(negocio.favoritesUser | favorito: usuario._id).length === 0 && (usuario._id != negocio.admin._id)">
                                                 <!-- El usuario no está en favoritesUser del negocio desde el pipe -->
                                                 <button type="button" (click)="agregarFavorito(negocio, i)" class="btn btn-icon btn-pink mr-1">
-                                                        <i class="fa fa-bookmark"></i> Add Favoritos
+                                                        <i class="fa fa-bookmark"></i>
                                                     </button>
                                             </div>
                                             <div *ngIf="(negocio.favoritesUser | favorito: usuario._id).length != 0">
@@ -104,7 +104,7 @@
 
                                         <div *ngIf="!negocio.favoritesUser.length  && (usuario._id != negocio.admin._id)">
                                             <button type="button" (click)="agregarFavorito(negocio, i)" class="btn btn-icon btn-pink mr-1">
-                                                        <i class="fa fa-bookmark"></i> Add Favoritos
+                                                        <i class="fa fa-bookmark"></i>
                                                     </button>
                                         </div>
                                         <!-- {{favoritosuser}}
