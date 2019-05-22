@@ -17,13 +17,15 @@ import { HttpInterceptorService } from './core/services/http-interceptor.service
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { environment } from '../environments/environment';
+import { FavoritoPipe } from './pipes/favorito.pipe';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    // FavoritoPipe
   ],
   imports: [
     FormsModule,
@@ -37,6 +39,9 @@ import { environment } from '../environments/environment';
     ToastrModule.forRoot()
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [
+    //   FavoritoPipe
+  ]
 })
 export class AppModule { }

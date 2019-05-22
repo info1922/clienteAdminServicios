@@ -13,6 +13,7 @@ import { HttpInterceptorService } from '../core/services/http-interceptor.servic
 import { NegocioComponent } from './negocio/negocio.component';
 import { TodosnegocioComponent } from './todosnegocio/todosnegocio.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
+import { FavoritoPipe } from '../pipes/favorito.pipe';
 
 @NgModule({
   imports: [
@@ -22,11 +23,13 @@ import { FavoritosComponent } from './favoritos/favoritos.component';
     ReactiveFormsModule,
     PrincipalRoutingModule
   ],
-  exports: [],
+  exports: [
+  ],
   declarations: [
       PanelComponent,
       ContainerComponent,
-      MenuComponent, PerfilComponent, NegocioComponent, TodosnegocioComponent, FavoritosComponent],
+      MenuComponent, PerfilComponent, NegocioComponent, TodosnegocioComponent, FavoritosComponent,
+      FavoritoPipe],
   providers: [MenuService, TodosnegocioComponent]
 })
 export class PrincipalModule { }

@@ -50,6 +50,7 @@ export class TodosnegocioComponent implements OnInit {
     Negocios() {
         this.todosNegocios.obtenerNegocios().subscribe((resp: any) => {
             this.negocios = resp;
+            console.log('Negocios: ', this.negocios);
         });
     }
 
@@ -64,19 +65,20 @@ export class TodosnegocioComponent implements OnInit {
     }
 
     agregarFavorito(negocio: any, index: any) {
-        this.Negocios();
+        // this.Negocios();
         const idU = this.usuario._id;
-        console.log({negocio, index, idU});
+        // console.log('Servidor agreFav: ', {negocio, index, idU});
         const verificaU = negocio.favoritesUser.find(id =>  id === this.usuario._id);
-        console.log(verificaU);
+        // console.log(verificaU);
 
 
         const es = [];
 
         this.todosNegocios.agregarFavorito(negocio._id).subscribe((res: any) => {
-            console.log(res);
+            console.log('Servidor agreFav: ', res);
             this.Negocios();
-
+            this.usuario = JSON.parse(this.jwtService.getUser());
+            console.log('Usuario agreFav: ', this.usuario);
         });
     }
 
@@ -86,6 +88,7 @@ export class TodosnegocioComponent implements OnInit {
         this.favService.quitarFavorito(id).subscribe((res: any) => {
             this.usuario = JSON.parse(this.jwtService.getUser());
             this.Negocios();
+            console.log('Usuario quitFav: ', this.usuario);
         });
     }
 
