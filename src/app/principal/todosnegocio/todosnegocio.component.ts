@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { JwtService } from '../../core/services/jwt.service';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { FavoritosService } from '../favoritos/favoritos.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     selector: 'app-todosnegocio',
@@ -24,7 +25,8 @@ export class TodosnegocioComponent implements OnInit {
         public todosNegocios: TodosnegociosService,
         public wsService: WebsocketService,
         public jwtService: JwtService,
-        public favService: FavoritosService) {
+        public favService: FavoritosService,
+        public toastService: ToastrService) {
 
             /* console.log(this.usuario._id); */
         }
@@ -34,7 +36,9 @@ export class TodosnegocioComponent implements OnInit {
         this.usuario = JSON.parse(this.jwtService.getUser());
         this.Negocios();
         this.escucharSocket();
-        console.log('Usuario en ngOninit: ', this.usuario);
+        this.escucharMensajeEliminado();
+        this.escucharMensajeEliminacionPersonal();
+       /*  console.log('Usuario en ngOninit: ', this.usuario); */
 
 
     }
@@ -47,15 +51,35 @@ export class TodosnegocioComponent implements OnInit {
             });
     }
 
+    escucharMensajeEliminado() {
+        this.wsService.escuchar('mensajeEliminacion')
+            .subscribe((data: any) => {
+                console.log('Mensaje: ', data);
+            });
+    }
+
+    escucharMensajeEliminacionPersonal() {
+        this.wsService.escuchar('mensajepersonal')
+            .subscribe((data: any) => {
+                this.toastService.info(`${data.msg}`, ' ' , {
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000,
+                    progressBar: true,
+                    closeButton: true
+                });
+            });
+    }
+
     Negocios() {
         this.todosNegocios.obtenerNegocios().subscribe((resp: any) => {
             this.negocios = resp;
-            console.log('Negocios: ', this.negocios);
         });
     }
 
     eliminarItem(negocio: any) {
-        this.todosNegocios.eliminarNegocio(negocio).subscribe();
+        this.todosNegocios.eliminarNegocio(negocio).subscribe((resp: any) => {
+        });
+
     }
 
     agregarFavorito(negocio: any, index: any) {
@@ -69,10 +93,10 @@ export class TodosnegocioComponent implements OnInit {
         const es = [];
 
         this.todosNegocios.agregarFavorito(negocio._id).subscribe((res: any) => {
-            console.log('Servidor agreFav: ', res);
+            /* console.log('Servidor agreFav: ', res); */
             this.Negocios();
             this.usuario = JSON.parse(this.jwtService.getUser());
-            console.log('Usuario agreFav: ', this.usuario);
+            /* console.log('Usuario agreFav: ', this.usuario); */
         });
     }
 
@@ -82,7 +106,7 @@ export class TodosnegocioComponent implements OnInit {
         this.favService.quitarFavorito(id).subscribe((res: any) => {
             this.usuario = JSON.parse(this.jwtService.getUser());
             this.Negocios();
-            console.log('Usuario quitFav: ', this.usuario);
+            /* console.log('Usuario quitFav: ', this.usuario); */
         });
     }
 

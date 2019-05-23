@@ -31,27 +31,6 @@
                                             <button type="button" (click)="eliminarItem(negocio)" class="btn btn-dark btn-min-width mr-1 mb-1">{{negocio.admin.role}} ||<i class="fa fa-trash"></i></button>
                                         </div>
 
-                                        <!-- <div class="media-body text-left" *ngIf="usuario._id != negocio.favoritesUser
-                                                                                && usuario._id != negocio.admin._id">
-                                            <button type="button" (click)="agregarFavorito(negocio, i)" class="btn btn-icon btn-pink mr-1">
-                                                        <i class="fa fa-bookmark"></i> Add Favoritos
-                                                    </button>
-                                        </div> -->
-
-                                        <!-- <div class="media-body text-left" *ngIf="usuario._id != negocio.favoritesUser
-                                                                                && usuario._id != negocio.admin._id
-                                                                                && usuario._id !=
-                                                                                negocio.favoritesUser && usuario.favorites != negocio.id">
-                                            <button type="button" (click)="agregarFavorito(negocio, i)" class="btn btn-icon btn-pink mr-1">
-                                                        <i class="fa fa-bookmark"></i> Add Favoritos
-                                                    </button>
-                                        </div>
-
-                                        <div class="media-body text-left" *ngIf="usuario.id != negocio.favoritesUser">
-                                            <button type="button" (click)="quitFavorito(negocio._id)" class="btn btn-icon btn-success mr-1">
-                                                    <i class="fa fa-trash-o"></i> DELL favoritos
-                                                </button>
-                                        </div> -->
 
                                         <div *ngFor="let favorite of usuario.favorites">
                                             <div *ngFor="let favoritosuser of negocio.favoritesUser">
@@ -64,28 +43,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div *ngFor="let favorite of usuario.favorites">
-                                            <div *ngFor="let favoritosuser of negocio.favoritesUser">
-                                                <div *ngIf="!(negocio._id == favorite && usuario._id == favoritosuser)">
-                                                    No está en favoritos
-                                                    <button type="button" (click)="agregarFavorito(negocio, i)" class="btn btn-icon btn-pink mr-1">
-                                                        <i class="fa fa-bookmark"></i> Add Favoritos
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div> -->
-
-                                        <!-- VERIFICA QUE HAYA FAVORITOS Y SI EL NEGOCIO ESTA EN FAVORITOS -->
-                                        <!-- <div *ngIf="usuario.favorites.length">
-                                            El usuario iene favoritos
-                                            <div *ngIf="(usuario.favorites | favorito: negocio._id).length === 0">
-                                                No está en favoritos desde el pipe
-                                            </div>
-                                            <div *ngIf="(usuario.favorites | favorito: negocio._id).length != 0">
-                                                Está en favoritos desde el pipe
-                                            </div>
-
-                                        </div> -->
 
                                         <!-- VERIFICA QUE EL USUARIO ESTE EN FAVORITESUSER DEL NEGOCIO -->
                                         <div *ngIf="negocio.favoritesUser.length">
@@ -107,23 +64,6 @@
                                                         <i class="fa fa-bookmark"></i>
                                                     </button>
                                         </div>
-                                        <!-- {{favoritosuser}}
-                                            <div class="media-body text-left" *ngIf="usuario._id == favoritosuser && usuario.id != favorite">
-                                                    <button type="button" (click)="quitFavorito(negocio._id)" class="btn btn-icon btn-success mr-1">
-                                                        <i class="fa fa-trash-o"></i> DELL favoritos
-                                                    </button>
-                                                </div> -->
-                                        <!-- <div *ngFor="let favoritosuser of negocio.favoritesUser">
-
-
-
-                                                {{favoritosuser}}
-                                                <div class="media-body text-left" *ngIf="usuario._id == favoritosuser && usuario.id != favorite">
-                                                    <button type="button" (click)="quitFavorito(negocio._id)" class="btn btn-icon btn-success mr-1">
-                                                        <i class="fa fa-trash-o"></i> DELL favoritos
-                                                    </button>
-                                                </div>
-                                            </div> -->
 
                                     </div>
 

@@ -5,6 +5,7 @@ import { map, catchError } from 'rxjs/operators';
 import { WebsocketService } from '../../core/services/websocket.service';
 import { JwtService } from '../../core/services/jwt.service';
 import { AuthService } from '../../core/services/auth.service';
+import { FavoritosService } from '../favoritos/favoritos.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class TodosnegociosService {
     constructor(
         public httpClient: HttpClient,
         public jwtService: JwtService,
-        public authService: AuthService
+        public authService: AuthService,
+        public favService: FavoritosService
         ) {
         }
 
@@ -32,6 +34,7 @@ export class TodosnegociosService {
 
         return this.httpClient.delete(url).pipe(map((resp: any) => {
             console.log('Negocio eliminado: ', resp);
+            this.favService.escucharFavoritos();
         }));
     }
 
