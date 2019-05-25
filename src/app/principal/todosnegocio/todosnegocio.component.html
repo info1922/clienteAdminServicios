@@ -31,7 +31,50 @@
                                             <button type="button" (click)="eliminarItem(negocio)" class="btn btn-dark btn-min-width mr-1 mb-1">{{negocio.admin.role}} ||<i class="fa fa-trash"></i></button>
                                         </div>
 
+                                        <!-- Like -->
+                                        <div *ngFor="let like of usuario.likes">
+                                            <div *ngFor="let likesuser of negocio.likesUser">
+                                                <div *ngIf="negocio._id == like && usuario._id == likesuser">
+                                                    <button type="button" (click)="dislike(negocio._id)" class="btn btn-icon btn-pure blue mb-1">
+                                                        <div>
+                                                            <i class="fa fa-thumbs-up  sizeIcon"></i> <br>
+                                                        </div>
+                                                        <p class="" style="font-weight: 600; font-size: 0.8rem" >{{negocio.likesUser.length}}</p>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <!-- VERIFICA QUE EL USUARIO ESTE EN likes DEL NEGOCIO -->
+                                        <div *ngIf="negocio.likesUser.length">
+                                            <!-- El negocio tiene favoritos -->
+                                            <div *ngIf="(negocio.likesUser | favorito: usuario._id).length === 0 && (usuario._id != negocio.admin._id)">
+                                                <!-- El usuario no está en favoritesUser del negocio desde el pipe -->
+                                                <button type="button" (click)="like(negocio._id)" class="btn btn-icon btn-pure blue mb-1">
+                                                    <div>
+                                                        <i class="fa fa-thumbs-o-up  sizeIcon"></i> <br>
+                                                    </div>
+                                                        <p class="" style="font-weight: 600; font-size: 0.8rem" >{{negocio.likesUser.length}}</p>
+                                                </button>
+                                            </div>
+                                            <div *ngIf="(negocio.likesUser | favorito: usuario._id).length != 0">
+                                                <!-- El usuario Está en favoritesUser del negocio desde el pipe -->
+                                            </div>
+                                            <!-- {{usuario.favorites | favorito: negocio._id}} -->
+                                        </div>
+
+                                        <div class="media-body text-left" *ngIf="!negocio.likesUser.length  && (usuario._id != negocio.admin._id)">
+                                            <button type="button" (click)="like(negocio._id)" class="btn btn-icon btn-pure blue mb-1">
+                                                <div>
+                                                    <i class="fa fa-thumbs-o-up  sizeIcon"></i> <br>
+                                                </div>
+                                                    <p class="" style="font-weight: 600; font-size: 0.8rem" >{{negocio.likesUser.length}}</p>
+                                            </button>
+                                        </div>
+
+
+
+                                        <!-- Favoritos -->
                                         <div *ngFor="let favorite of usuario.favorites">
                                             <div *ngFor="let favoritosuser of negocio.favoritesUser">
                                                 <div *ngIf="negocio._id == favorite && usuario._id == favoritosuser">
@@ -50,8 +93,8 @@
                                             <div *ngIf="(negocio.favoritesUser | favorito: usuario._id).length === 0 && (usuario._id != negocio.admin._id)">
                                                 <!-- El usuario no está en favoritesUser del negocio desde el pipe -->
                                                 <button type="button" (click)="agregarFavorito(negocio, i)" class="btn btn-icon btn-pink mr-1">
-                                                        <i class="fa fa-bookmark"></i>
-                                                    </button>
+                                                    <i class="fa fa-bookmark"></i>
+                                                </button>
                                             </div>
                                             <div *ngIf="(negocio.favoritesUser | favorito: usuario._id).length != 0">
                                                 <!-- El usuario Está en favoritesUser del negocio desde el pipe -->
@@ -61,8 +104,8 @@
 
                                         <div *ngIf="!negocio.favoritesUser.length  && (usuario._id != negocio.admin._id)">
                                             <button type="button" (click)="agregarFavorito(negocio, i)" class="btn btn-icon btn-pink mr-1">
-                                                        <i class="fa fa-bookmark"></i>
-                                                    </button>
+                                                <i class="fa fa-bookmark"></i>
+                                             </button>
                                         </div>
 
                                     </div>

@@ -110,12 +110,23 @@ export class TodosnegocioComponent implements OnInit {
         });
     }
 
-    quitFavoritoFavoritosComponente(id: any) {
+    /* quitFavoritoFavoritosComponente(id: any) {
         this.favService.quitarFavorito(id).subscribe((res: any) => {
+        });
+    }*/
+
+    like(id: any) {
+        this.todosNegocios.like(id).subscribe((res: any) => {
+            this.usuario = JSON.parse(this.jwtService.getUser());
+            this.Negocios();
         });
     }
 
-
-
+    dislike(id: any) {
+        this.todosNegocios.dislike(id).subscribe((res: any) => {
+            this.usuario = JSON.parse(this.jwtService.getUser());
+            this.Negocios();
+        });
+    }
 
 }

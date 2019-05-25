@@ -18,7 +18,8 @@ export class TodosnegociosService {
         public httpClient: HttpClient,
         public jwtService: JwtService,
         public authService: AuthService,
-        public favService: FavoritosService
+        public favService: FavoritosService,
+        public wsService: WebsocketService
         ) {
         }
 
@@ -52,6 +53,33 @@ export class TodosnegociosService {
         }));
     }
 
+    like(id: any) {
+        const url = `${environment.api_url}/user/like`;
+
+        const body: any = {
+            id
+        };
+
+        return this.httpClient.post(url, body).pipe(map((resp: any) => {
+            const token = this.authService.token;
+            this.authService.guardarStorage(token, resp.usuario);
+            return resp;
+        }));
+    }
+
+    dislike(id: any) {
+        const url = `${environment.api_url}/user/dislike`;
+
+        const body: any = {
+            id
+        };
+
+        return this.httpClient.post(url, body).pipe(map((resp: any) => {
+            const token = this.authService.token;
+            this.authService.guardarStorage(token, resp.usuario);
+            return resp;
+        }));
+    }
 
 
 }
