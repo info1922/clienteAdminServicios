@@ -38,6 +38,7 @@ export class TodosnegocioComponent implements OnInit {
         this.escucharSocket();
         this.escucharMensajeEliminado();
         this.escucharMensajeEliminacionPersonal();
+        this.escucharMensajeLike();
        /*  console.log('Usuario en ngOninit: ', this.usuario); */
 
 
@@ -61,7 +62,18 @@ export class TodosnegocioComponent implements OnInit {
     escucharMensajeEliminacionPersonal() {
         this.wsService.escuchar('mensajepersonal')
             .subscribe((data: any) => {
-                this.toastService.info(`${data.msg}`, ' ' , {
+                this.toastService.warning(`${data.msg}`, ' ' , {
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000,
+                    progressBar: true,
+                    closeButton: true
+                });
+            });
+    }
+    escucharMensajeLike() {
+        this.wsService.escuchar('mensajepersonallike')
+            .subscribe((data: any) => {
+                this.toastService.info(`${data.msg}`, ' ',  {
                     positionClass: 'toast-top-right',
                     timeOut: 5000,
                     progressBar: true,
@@ -110,10 +122,10 @@ export class TodosnegocioComponent implements OnInit {
         });
     }
 
-    /* quitFavoritoFavoritosComponente(id: any) {
+    quitFavoritoFavoritosComponente(id: any) {
         this.favService.quitarFavorito(id).subscribe((res: any) => {
         });
-    }*/
+    }
 
     like(id: any) {
         this.todosNegocios.like(id).subscribe((res: any) => {
