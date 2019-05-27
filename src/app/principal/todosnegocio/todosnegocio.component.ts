@@ -48,7 +48,7 @@ export class TodosnegocioComponent implements OnInit {
         this.wsService.escuchar('negocios')
             .subscribe((data: any) => {
                 this.negocios = data;
-
+                this.usuario = JSON.parse(this.jwtService.getUser());
             });
     }
 
@@ -85,6 +85,7 @@ export class TodosnegocioComponent implements OnInit {
     Negocios() {
         this.todosNegocios.obtenerNegocios().subscribe((resp: any) => {
             this.negocios = resp;
+            this.usuario = JSON.parse(this.jwtService.getUser());
         });
     }
 
@@ -95,20 +96,16 @@ export class TodosnegocioComponent implements OnInit {
     }
 
     agregarFavorito(negocio: any, index: any) {
-        // this.Negocios();
+
         const idU = this.usuario._id;
-        // console.log('Servidor agreFav: ', {negocio, index, idU});
+
         const verificaU = negocio.favoritesUser.find(id =>  id === this.usuario._id);
-        // console.log(verificaU);
-
-
         const es = [];
 
         this.todosNegocios.agregarFavorito(negocio._id).subscribe((res: any) => {
-            /* console.log('Servidor agreFav: ', res); */
             this.Negocios();
             this.usuario = JSON.parse(this.jwtService.getUser());
-            /* console.log('Usuario agreFav: ', this.usuario); */
+
         });
     }
 
@@ -116,14 +113,9 @@ export class TodosnegocioComponent implements OnInit {
 
     quitFavorito(id: any) {
         this.favService.quitarFavorito(id).subscribe((res: any) => {
-            this.usuario = JSON.parse(this.jwtService.getUser());
             this.Negocios();
-            /* console.log('Usuario quitFav: ', this.usuario); */
-        });
-    }
+            this.usuario = JSON.parse(this.jwtService.getUser());
 
-    quitFavoritoFavoritosComponente(id: any) {
-        this.favService.quitarFavorito(id).subscribe((res: any) => {
         });
     }
 

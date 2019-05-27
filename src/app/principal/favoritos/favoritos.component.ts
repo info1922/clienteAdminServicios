@@ -21,21 +21,14 @@ export class FavoritosComponent implements OnInit {
         this.getFavoritos();
 
         this.favService.escucharFavoritos().subscribe((msg: any) => {
+            console.log('Cambios de favoritos');
             this.favoritos = msg.neFav;
+            console.log(this.favoritos);
         });
     }
 
-   /*  escucharSocket() {
-        this.wsService.escuchar('favoritos')
-            .subscribe((data: any) => {
-                console.log('La data del socket: ', data);
-                this.favoritos = data;
-            });
-    } */
-
     getFavoritos() {
         this.favService.getAllFavoritos().subscribe( (res: any) => {
-            /* console.log('Respuesta del servicio: ', res.favoritos); */
             this.favoritos = res.favoritos;
 
         });
@@ -43,7 +36,11 @@ export class FavoritosComponent implements OnInit {
 
     quitFavorito(id: any) {
         this.favService.quitarFavorito(id).subscribe((res: any) => {
-            this.todosNeg.Negocios();
+            this.favService.escucharFavoritos().subscribe((msg: any) => {
+                this.todosNeg.Negocios();
+                this.favoritos = msg.neFav;
+                console.log(this.favoritos);
+            });
         });
     }
 

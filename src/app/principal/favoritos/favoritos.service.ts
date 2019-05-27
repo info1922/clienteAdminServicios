@@ -25,13 +25,13 @@ export class FavoritosService {
     }
 
     escucharFavoritos() {
+
         return this.wsService.escuchar('favoritos-privado');
     }
 
     quitarFavorito(id: string) {
         const url = `${environment.api_url}/user/favdelete/${id}`;
         return this.httpClient.delete(url).pipe(map((resp: any) => {
-           /*  console.log('respuesta: ', resp); */
             const token = this.authService.token;
             this.authService.guardarStorage(token, resp.user);
             return resp;
