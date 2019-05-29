@@ -62,6 +62,7 @@ export class WebsocketService {
         const data = {
             user:  {
                 nombre: 'sin-nombre',
+                role: 'sin-role',
                 _id: 'sin-id'
             },
             token: 'sin-token',
@@ -70,6 +71,7 @@ export class WebsocketService {
         const payload = {
             data,
             token: data.token,
+            role: data.user.role,
             _id: data.user._id
         };
         this.emitir('configurar-usuario', payload, () => {});

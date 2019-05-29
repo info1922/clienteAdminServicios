@@ -4,7 +4,6 @@ import { WebsocketService } from '../../core/services/websocket.service';
 import { NegocioService } from '../negocio/negocio.service';
 import { Subscription } from 'rxjs';
 import { JwtService } from '../../core/services/jwt.service';
-import { trigger, transition, style, animate } from '@angular/animations';
 import { FavoritosService } from '../favoritos/favoritos.service';
 import { ToastrService } from 'ngx-toastr';
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JwtService } from '../../core/services/jwt.service';
+import { ContainerService } from './container.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-container',
@@ -8,7 +10,10 @@ import { JwtService } from '../../core/services/jwt.service';
 })
 export class ContainerComponent implements OnInit {
 
-  constructor(public jwtService: JwtService) { }
+  constructor(
+      public jwtService: JwtService,
+      public con: ContainerService,
+      public toas: ToastrService) { }
 
     usuarioTipo: any;
     ngOnInit() {

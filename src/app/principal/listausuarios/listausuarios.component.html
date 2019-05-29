@@ -63,9 +63,9 @@
                                 </div>
                             </fieldset>
                         </div>
-                        <div id="users-list" class="list-group position-relative" *ngFor="let user of usuariosActivosObsUser | async">
+                        <div id="users-list" class="list-group position-relative" *ngFor="let user of usuariosActivosObsUser | async, unique">
                             <div class="users-list-padding media-list">
-                                <a href="#" class="media border-0">
+                                <a class="media border-0">
                                     <div class="media-left pr-1">
                                         <span class="avatar avatar-md avatar-online">
                                             <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image">
@@ -76,10 +76,11 @@
                                         <h6 class="list-group-item-heading">{{user.nombre}}
                                             <span class="font-small-3 float-right primary">{{user.idU}}</span>
                                         </h6>
-                                        <p class="list-group-item-text text-muted mb-0"><i class="ft-check primary font-small-2"></i> {{user.role}}
-                                            <span class="float-right primary">
-                                                <i class="font-medium-1 icon-pin blue-grey lighten-3"></i>
-                                            </span>
+                                        <p class="list-group-item-text text-muted mb-0">
+                                            <i class="ft-check primary font-small-2 pr-0"></i> {{user.role}}
+                                            <button class="btn btn-icon btn-pure blue p-0 float-right " type="button"  (click)="data(user.nombre, user.idU)" >
+                                                <i class="fa fa-paper-plane"></i>
+                                            </button>
                                         </p>
                                     </div>
                                 </a>
@@ -100,7 +101,7 @@
                         </div>
                         <div id="users-list" class="list-group position-relative" *ngFor="let admin of usuariosActivosObsAdmin | async">
                             <div class="users-list-padding media-list">
-                                <a href="#" class="media border-0">
+                                <a class="media border-0">
                                     <div class="media-left pr-1">
                                         <span class="avatar avatar-md avatar-online">
                                             <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image">
@@ -112,9 +113,9 @@
                                             <span class="font-small-3 float-right primary">{{admin.idU}}</span>
                                         </h6>
                                         <p class="list-group-item-text text-muted mb-0"><i class="ft-check primary font-small-2"></i> {{admin.role}}
-                                            <span class="float-right primary">
-                                                <i class="font-medium-1 icon-pin blue-grey lighten-3"></i>
-                                            </span>
+                                            <button class="btn btn-icon btn-pure blue p-0 float-right " type="button"  (click)="data(admin.nombre, admin.idU)" >
+                                                <i class="fa fa-paper-plane"></i>
+                                            </button>
                                         </p>
                                     </div>
                                 </a>
@@ -138,7 +139,7 @@
                         </div>
                         <div id="users-list" class="list-group position-relative" *ngFor="let super of usuariosActivosObsSuper | async">
                             <div class="users-list-padding media-list">
-                                <a href="#" class="media border-0">
+                                <a class="media border-0">
                                     <div class="media-left pr-1">
                                         <span class="avatar avatar-md avatar-online">
                                             <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image">
@@ -150,9 +151,9 @@
                                             <span class="font-small-3 float-right primary">{{super.idU}}</span>
                                         </h6>
                                         <p class="list-group-item-text text-muted mb-0"><i class="ft-check primary font-small-2"></i> {{super.role}}
-                                            <span class="float-right primary">
-                                                <i class="font-medium-1 icon-pin blue-grey lighten-3"></i>
-                                            </span>
+                                            <button class="btn btn-icon btn-pure blue p-0 float-right " type="button"  (click)="data(super.nombre, super.idU)" >
+                                                <i class="fa fa-paper-plane"></i>
+                                            </button>
                                         </p>
                                     </div>
                                 </a>
@@ -161,9 +162,46 @@
                     </div>
                 </div>
                 <div class="col-md-12 col-sm-12">
+                    <div class="card" *ngIf="caja">
+                        <div class="card-header">
+                            <h4 class="card-title">User Profile</h4>
+                        </div>
+                        <div class="card-content collpase show">
+                            <div class="card-body">
+                                <div class="card-text">
+                                    <p class="card-text">De: <strong>Ivan</strong>
+                                    </p>
+                                    <p class="card-text">Para: <strong>{{this.nombre}}</strong>
+                                    </p>
+                                </div>
+                                <br>
+                                <form class="form">
+                                    <div class="form-body">
 
+                                        <div class="form-group">
+                                            <label for="userinput8" class="sr-only">Bio</label>
+                                            <textarea id="userinput8" rows="2" class="form-control" name="mensaje" placeholder="Bio" [(ngModel)]="this.mensaje" ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions right">
+                                        <button type="button" class="btn btn-outline-warning mr-1" (click)="this.caja = false">
+                                            <i class="ft-x"></i> Cancelar
+                                        </button>
+                                        <button type="submit" class="btn btn-outline-primary" (click)="enviarPrivado(mensaje)">
+                                            <i class="ft-check"></i> Enviar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </div>
 </div>
+
+
+
+
+

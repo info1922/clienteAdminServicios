@@ -6,6 +6,8 @@ import { LoginComponent } from '../../auth/login/login.component';
 import { MenuService } from './menu.service';
 import { PerfilService } from '../perfil/perfil.service';
 import { Subscription } from 'rxjs';
+import { ListausuariosService } from '../listausuarios/listausuarios.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -19,26 +21,36 @@ export class MenuComponent implements OnInit {
   constructor(
     public router: Router,
     public authService: AuthService,
-    public perfilService: PerfilService
+    public perfilService: PerfilService,
+    public lista: ListausuariosService,
+    public menu: MenuService,
+    public toas: ToastrService
   ) {
 
 
     }
 
     ngOnInit() {
-
-      /* this.mensaje = this.perfilService.escucharcambios().subscribe(msg => {
-        this.us = msg;
-        console.log(this.us.nombre);
-      }); */
+        this.menu.getMessagesPrivate().subscribe((msg: any) => {
+            this.toas.info(`${msg.cuerpo}`, `${msg.de} te envio un mensaje` , {
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000,
+                    progressBar: true,
+                    closeButton: true
+                });
+        });
     }
 
 
-  salir() {
-    this.authService.logout();
-  }
+    salir() {
+        this.authService.logout();
+    }
 
 
-
+    obtener() {
+        this.lista.obtenerconectados().subscribe( res => {
+            console.log('Respuesta: ', res);
+        });
+    }
 
 }
