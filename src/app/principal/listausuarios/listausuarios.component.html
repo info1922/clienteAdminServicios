@@ -1,0 +1,169 @@
+<div class="app-content content">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-6 col-6 mb-1">
+                <h3 class="content-header-title">Lista de usuarios</h3>
+            </div>
+            <div class="content-header-right breadcrumbs-right breadcrumbs-top col-md-6 col-6">
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Panel</a>
+                        </li>
+                        <li class="breadcrumb-item active">Perfil de usuario
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+        <div class="content-body">
+            <section class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="card ">
+                        <div class="card-body chat-fixed-search">
+                            <h4 class="card-title text-center">Usuarios no registrados</h4>
+                            <fieldset class="form-group position-relative has-icon-left m-0">
+                                <input type="text" class="form-control" id="iconLeft4" placeholder="Search user" autocomplete="off">
+                                <div class="form-control-position">
+                                    <i class="ft-search"></i>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="users-list" class="list-group position-relative" *ngFor="let cliente of usuariosActivosObsCliente | async">
+                            <div class="users-list-padding media-list">
+                                <a href="#" class="media border-0" >
+                                    <div class="media-left pr-1">
+                                        <span class="avatar avatar-md avatar-online">
+                                            <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading">{{cliente.nombre}}
+                                            <span class="font-small-3 float-right primary">{{cliente.idU}}</span>
+                                        </h6>
+                                        <p class="list-group-item-text text-muted mb-0"><i class="ft-check primary font-small-2"></i> {{cliente.role}}
+                                            <span class="float-right primary">
+                                                <i class="font-medium-1 icon-pin blue-grey lighten-3"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="card ">
+                        <div class="card-body chat-fixed-search">
+                            <h4 class="card-title text-center">Rol: user</h4>
+                            <fieldset class="form-group position-relative has-icon-left m-0">
+                                <input type="text" class="form-control" id="iconLeft4" placeholder="Search user" autocomplete="off">
+                                <div class="form-control-position">
+                                    <i class="ft-search"></i>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="users-list" class="list-group position-relative" *ngFor="let user of usuariosActivosObsUser | async">
+                            <div class="users-list-padding media-list">
+                                <a href="#" class="media border-0">
+                                    <div class="media-left pr-1">
+                                        <span class="avatar avatar-md avatar-online">
+                                            <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading">{{user.nombre}}
+                                            <span class="font-small-3 float-right primary">{{user.idU}}</span>
+                                        </h6>
+                                        <p class="list-group-item-text text-muted mb-0"><i class="ft-check primary font-small-2"></i> {{user.role}}
+                                            <span class="float-right primary">
+                                                <i class="font-medium-1 icon-pin blue-grey lighten-3"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <div class="card ">
+                        <div class="card-body chat-fixed-search">
+                            <h4 class="card-title text-center">Rol: admin</h4>
+                            <fieldset class="form-group position-relative has-icon-left m-0">
+                                <input type="text" class="form-control" id="iconLeft4" placeholder="Search user" autocomplete="off">
+                                <div class="form-control-position">
+                                    <i class="ft-search"></i>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="users-list" class="list-group position-relative" *ngFor="let admin of usuariosActivosObsAdmin | async">
+                            <div class="users-list-padding media-list">
+                                <a href="#" class="media border-0">
+                                    <div class="media-left pr-1">
+                                        <span class="avatar avatar-md avatar-online">
+                                            <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading">{{admin.nombre}}
+                                            <span class="font-small-3 float-right primary">{{admin.idU}}</span>
+                                        </h6>
+                                        <p class="list-group-item-text text-muted mb-0"><i class="ft-check primary font-small-2"></i> {{admin.role}}
+                                            <span class="float-right primary">
+                                                <i class="font-medium-1 icon-pin blue-grey lighten-3"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="row">
+                <div class="col-md-4 col-sm-12">
+                    <div class="card ">
+                        <div class="card-body chat-fixed-search">
+                            <h4 class="card-title text-center">Rol: super</h4>
+                            <fieldset class="form-group position-relative has-icon-left m-0">
+                                <input type="text" class="form-control" id="iconLeft4" placeholder="Search user" autocomplete="off">
+                                <div class="form-control-position">
+                                    <i class="ft-search"></i>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div id="users-list" class="list-group position-relative" *ngFor="let super of usuariosActivosObsSuper | async">
+                            <div class="users-list-padding media-list">
+                                <a href="#" class="media border-0">
+                                    <div class="media-left pr-1">
+                                        <span class="avatar avatar-md avatar-online">
+                                            <img class="media-object rounded-circle" src="assets/images/portrait/small/avatar-s-3.png" alt="Generic placeholder image">
+                                            <i></i>
+                                        </span>
+                                    </div>
+                                    <div class="media-body w-100">
+                                        <h6 class="list-group-item-heading">{{super.nombre}}
+                                            <span class="font-small-3 float-right primary">{{super.idU}}</span>
+                                        </h6>
+                                        <p class="list-group-item-text text-muted mb-0"><i class="ft-check primary font-small-2"></i> {{super.role}}
+                                            <span class="float-right primary">
+                                                <i class="font-medium-1 icon-pin blue-grey lighten-3"></i>
+                                            </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

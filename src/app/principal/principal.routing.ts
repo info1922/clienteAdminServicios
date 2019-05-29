@@ -4,6 +4,7 @@ import { ContainerComponent } from './container/container.component';
 import { PanelComponent } from './panel/panel.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AuthGuardService } from '../core/services/auth-guard.service';
+import { ListausuariosComponent } from './listausuarios/listausuarios.component';
 
 
 const routes: Routes = [{
@@ -20,6 +21,11 @@ const routes: Routes = [{
       path: 'perfil',
       component: PerfilComponent,
       canActivateChild: [AuthGuardService]
+    },
+    {
+        path: 'listausuarios',
+        component: ListausuariosComponent,
+        canActivateChild: [AuthGuardService]
     }
   ]
 }];

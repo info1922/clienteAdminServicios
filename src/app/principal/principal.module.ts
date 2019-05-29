@@ -14,6 +14,7 @@ import { NegocioComponent } from './negocio/negocio.component';
 import { TodosnegocioComponent } from './todosnegocio/todosnegocio.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { FavoritoPipe } from '../pipes/favorito.pipe';
+import { ListausuariosComponent } from './listausuarios/listausuarios.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { FavoritoPipe } from '../pipes/favorito.pipe';
       PanelComponent,
       ContainerComponent,
       MenuComponent, PerfilComponent, NegocioComponent, TodosnegocioComponent, FavoritosComponent,
-      FavoritoPipe],
+      FavoritoPipe,
+      ListausuariosComponent],
   providers: [MenuService, TodosnegocioComponent]
 })
 export class PrincipalModule { }
