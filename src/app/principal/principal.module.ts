@@ -15,6 +15,7 @@ import { TodosnegocioComponent } from './todosnegocio/todosnegocio.component';
 import { FavoritosComponent } from './favoritos/favoritos.component';
 import { FavoritoPipe } from '../pipes/favorito.pipe';
 import { ListausuariosComponent } from './listausuarios/listausuarios.component';
+import { AppComponent } from '../app.component';
 
 @NgModule({
   imports: [

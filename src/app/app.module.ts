@@ -38,7 +38,7 @@ import { FavoritoPipe } from './pipes/favorito.pipe';
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],
-  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}],
+  providers: [{provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true}, AppComponent],
   bootstrap: [AppComponent],
   exports: [
     //   FavoritoPipe

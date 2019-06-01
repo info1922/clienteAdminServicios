@@ -31,14 +31,6 @@ export class MenuComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.menu.getMessagesPrivate().subscribe((msg: any) => {
-            this.toas.info(`${msg.cuerpo}`, `${msg.de} te envio un mensaje` , {
-                    positionClass: 'toast-top-right',
-                    timeOut: 5000,
-                    progressBar: true,
-                    closeButton: true
-                });
-        });
     }
 
 

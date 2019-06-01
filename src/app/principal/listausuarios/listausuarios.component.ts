@@ -3,6 +3,7 @@ import { ListausuariosService } from './listausuarios.service';
 import { Observable } from 'rxjs';
 import { MenuService } from '../menu/menu.service';
 import { FormsModule } from '@angular/forms';
+import { AppComponent } from '../../app.component';
 
 @Component({
     selector: 'app-listausuarios',
@@ -22,12 +23,18 @@ export class ListausuariosComponent implements OnInit {
         mensaje: string;
         id: string;
 
-    constructor(public lista: ListausuariosService) {
+    constructor(
+        public lista: ListausuariosService,
+        public menu: MenuService,
+        public app: AppComponent) {
 
     }
 
     ngOnInit() {
         this.cargaUsuarios();
+        this.lista.obtenerconectados().subscribe( res => {
+            console.log('Respuesta: ', res);
+        });
     }
 
     cargaUsuarios() {
