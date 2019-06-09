@@ -18,6 +18,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { environment } from '../environments/environment';
 import { FavoritoPipe } from './pipes/favorito.pipe';
+import { PasswordComponent } from './auth/password/password.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { FavoritoPipe } from './pipes/favorito.pipe';
     AppComponent,
     LoginComponent,
     RegisterComponent,
+    PasswordComponent
     // FavoritoPipe
   ],
   imports: [

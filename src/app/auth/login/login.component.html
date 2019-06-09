@@ -8,7 +8,7 @@
     <div class="content-body">
 
       <section class="flexbox-container">
-        <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="col-12 d-flex align-items-center">
 
             <div class="card border-grey border-lighten-3 px-2 py-2 m-0">
               <div class="card-header border-0">
@@ -41,7 +41,9 @@
                         <i class="fa fa-key"></i>
                       </div>
                       <div *ngIf="form.get('password').touched && form.get('password').invalid" class="invalid-feedback">
-                        <div *ngIf="!!form.get('password').errors.required">  <strong>La contraseña es obligatoria </strong> </div>
+                        <div *ngIf="!!form.get('password').errors.required">
+                            <strong>La contraseña es obligatoria </strong>
+                        </div>
                         <!-- <div *ngIf="!!form.get('password').errors.minlength">  <strong>La contraseña debe de tener minimo 6 caracteres </strong> </div> -->
                     </div>
                     </fieldset>
@@ -49,6 +51,7 @@
                   </form>
                 </div>
                 <p class="text-center">¿Eres nuevo? <a [routerLink]="['/registro']" class="card-link"> Registrate</a></p>
+                <p class="text-center "> <a [routerLink]="['/reset']" class="card-link text-danger font-weight-bold"> He olvidado mi contraseña</a></p>
               </div>
             </div>
 

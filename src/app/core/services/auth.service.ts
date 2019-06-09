@@ -98,5 +98,12 @@ export class AuthService {
     this.router.navigate(['login']);
   }
 
+    resetlink(body) {
+        return this.httpClient.post(`${environment.api_url}/user/forgotpassword`, body)
+            .pipe(map((res: any) => {
+                return res;
+            }));
+    }
+
 
 }

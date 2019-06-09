@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { PasswordComponent } from './password/password.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 
@@ -17,7 +18,7 @@ import { PasswordComponent } from './password/password.component';
     ReactiveFormsModule,
   ],
   declarations: [
-  ],
+  ResetpasswordComponent],
   providers: [LoginComponent, RegisterComponent, PasswordComponent]
 })
 export class AuthModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { JwtService } from '../../core/services/jwt.service';
 import { ToastrService } from 'ngx-toastr';
@@ -47,20 +47,20 @@ export class LoginComponent implements OnInit {
 
 
     this.authService.login(this.form.value)
-      .subscribe((data: any ) => {
+        .subscribe((data: any ) => {
 
-        // Mandamos el token al servidor
-        console.log('La data del usaurio: ', data);
-        this.wsService.loginWs(data)
-        .then(() => {
-            this.router.navigate(['principal']);
-          });
+            // Mandamos el token al servidor
+            console.log('La data del usaurio: ', data);
+            this.wsService.loginWs(data)
+            .then(() => {
+                this.router.navigate(['principal']);
+            });
 
-          /* this.wsService.emitir('loginlogin', this.form.value); */
-        }, err => {
-        this.toastr.error('Correo o contraseña incorrecta', ' ' , {positionClass: 'toast-bottom-center'});
-        console.error(err);
-      });
+            /* this.wsService.emitir('loginlogin', this.form.value); */
+            }, err => {
+            this.toastr.error('Correo o contraseña incorrecta', ' ' , {positionClass: 'toast-bottom-center'});
+            console.error(err);
+        });
   }
 
 
