@@ -44,7 +44,7 @@ export class AuthService {
             this.wsService.loginWs(data);
 
         } else  {
-            console.log('TOken: ', this.token);
+            // console.log('TOken: ', this.token);
             this.token = '';
             this.usuario = null;
            // window.location.href = 'http://localhost:4200/#/login';
@@ -63,7 +63,7 @@ export class AuthService {
     registro(body: Registro) {
         return this.httpClient.post(`${environment.api_url}/user/signup`, body).pipe(map((res: any) => {
         // Mensaje de alerta
-        console.log('Usuario creado');
+        // console.log('Usuario creado');
         return res.usuario;
         }));
     }
@@ -88,9 +88,7 @@ export class AuthService {
             Authorization: `bearer ${token}`
         })
         };
-        console.log('Entrado a la llamada del servidor');
         return this.httpClient.get<boolean>(`${environment.api_url}/auth/authenticate`, httpOptions).pipe(map((res: any) => {
-            console.log('Respuesta: ', res);
             this.guardarStorage(res.token, res.usuario);
             this.token = [res.token];
             this.cargarStorage();
@@ -102,12 +100,9 @@ export class AuthService {
 
 
     logout() {
-        this.usuario = null,
-        this.token = '';
-        this.jwtservice.destroyToken();
-        this.jwtservice.destroyUser();
-        this.router.navigate(['login']);
-        this.wsService.logoutWs();
+        return this.httpClient.get(`${environment.api_url}/auth/logout`).pipe(map((res: any) => {
+            return res;
+        }));
     }
 
     resetlink(body) {

@@ -8,6 +8,7 @@ import { PerfilService } from '../perfil/perfil.service';
 import { Subscription } from 'rxjs';
 import { ListausuariosService } from '../listausuarios/listausuarios.service';
 import { ToastrService } from 'ngx-toastr';
+import { WebsocketService } from '../../core/services/websocket.service';
 
 
 @Component({
@@ -24,7 +25,9 @@ export class MenuComponent implements OnInit {
     public perfilService: PerfilService,
     public lista: ListausuariosService,
     public menu: MenuService,
-    public toas: ToastrService
+    public toas: ToastrService,
+    public jwtservice: JwtService,
+    public wsService: WebsocketService
   ) {
 
 
@@ -35,7 +38,16 @@ export class MenuComponent implements OnInit {
 
 
     salir() {
-        this.authService.logout();
+        this.authService.logout().subscribe(res => {
+            console.log('Respuesta del servidor: ', res);
+        }, error => {
+            console.log('Algo salio mal', error);
+        }, () => {
+            this.jwtservice.destroyToken();
+            this.jwtservice.destroyUser();
+            this.router.navigate(['login']);
+            this.wsService.logoutWs();
+        });
     }
 
 
