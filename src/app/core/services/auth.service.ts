@@ -12,97 +12,116 @@ import { Socket } from 'ngx-socket-io';
 import { WebsocketService } from './websocket.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthService {
 
-  token: any;
-  usuario: any;
+    token: any;
+    usuario: any;
 
-  constructor(
-    private httpClient: HttpClient,
-    private jwtservice: JwtService,
-    private router: Router,
-    private wsService: WebsocketService
-  ) {
+    constructor(
+        private httpClient: HttpClient,
+        private jwtservice: JwtService,
+        private router: Router,
+        private wsService: WebsocketService
+    ) {
 
-    /* console.log('Esta en el auth'); */
-    this.cargarStorage();
-  }
-
-  cargarStorage() {
-    if (this.jwtservice.getToken()) {
-      this.token = this.jwtservice.getToken();
-      this.usuario = JSON.parse(this.jwtservice.getUser());
-
-      const data: any = {
-        token: this.token,
-        user: this.usuario
-      };
-
-      this.wsService.loginWs(data);
-
-    } else {
-      this.token = '';
-      this.usuario = null;
+        /* console.log('Esta en el auth'); */
+        this.cargarStorage();
     }
-  }
 
-  guardarStorage(token: string, usuario: any) {
-      this.jwtservice.setToken(token);
-      this.jwtservice.setUser(usuario);
+    cargarStorage() {
+        console.log('Storage: ', this.usuario);
+        if (this.jwtservice.getToken()) {
+            this.token = this.jwtservice.getToken();
+            this.usuario = JSON.parse(this.jwtservice.getUser());
 
-      this.usuario = usuario;
-      this.token = token;
-  }
+            const data: any = {
+                token: this.token,
+                user: this.usuario
+            };
 
+            this.wsService.loginWs(data);
 
-  registro(body: Registro) {
-    return this.httpClient.post(`${environment.api_url}/user/signup`, body).pipe(map((res: any) => {
-      // Mensaje de alerta
-      console.log('Usuario creado');
-      return res.usuario;
-    }));
-  }
+        } else  {
+            console.log('TOken: ', this.token);
+            this.token = '';
+            this.usuario = null;
+           // window.location.href = 'http://localhost:4200/#/login';
+        }
+    }
 
+    guardarStorage(token: string, usuario: any) {
+        this.jwtservice.setToken(token);
+        this.jwtservice.setUser(usuario);
 
-
-  login(body: User): Observable<LoginRsp> {
-    return this.httpClient.post<LoginRsp>(`${environment.api_url}/user/login`, body)
-    .pipe(map((res: any) => {
-      this.guardarStorage(res.token, res.user);
-      this.token = [res.token];
-      return res;
-    }));
-  }
-
-  isAuthenticated(token): Observable<boolean> {
-    // console.log('El token: ', token);
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        // tslint:disable-next-line:object-literal-key-quotes
-        Authorization: `bearer ${token}`
-      })
-    };
-    return this.httpClient.get<boolean>(`${environment.api_url}/user/login`, httpOptions);
-  }
+        this.usuario = usuario;
+        this.token = token;
+    }
 
 
-  logout() {
-    this.usuario = null,
-    this.token = '';
-    this.jwtservice.destroyToken();
-    this.jwtservice.destroyUser();
-    this.wsService.logoutWs();
-    this.router.navigate(['login']);
-  }
+    registro(body: Registro) {
+        return this.httpClient.post(`${environment.api_url}/user/signup`, body).pipe(map((res: any) => {
+        // Mensaje de alerta
+        console.log('Usuario creado');
+        return res.usuario;
+        }));
+    }
+
+
+
+    login(body: User): Observable<LoginRsp> {
+        return this.httpClient.post<LoginRsp>(`${environment.api_url}/user/login`, body)
+        .pipe(map((res: any) => {
+        this.guardarStorage(res.token, res.user);
+        this.token = [res.token];
+        return res;
+        }));
+    }
+
+    isAuthenticated(token): Observable<boolean> {
+        // console.log('El token: ', token);
+        const httpOptions = {
+        headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            // tslint:disable-next-line:object-literal-key-quotes
+            Authorization: `bearer ${token}`
+        })
+        };
+        console.log('Entrado a la llamada del servidor');
+        return this.httpClient.get<boolean>(`${environment.api_url}/auth/authenticate`, httpOptions).pipe(map((res: any) => {
+            console.log('Respuesta: ', res);
+            this.guardarStorage(res.token, res.usuario);
+            this.token = [res.token];
+            this.cargarStorage();
+            return res;
+        }, err => {
+            console.log('Ocurrio un error');
+        }));
+    }
+
+
+    logout() {
+        this.usuario = null,
+        this.token = '';
+        this.jwtservice.destroyToken();
+        this.jwtservice.destroyUser();
+        this.router.navigate(['login']);
+        this.wsService.logoutWs();
+    }
 
     resetlink(body) {
         return this.httpClient.post(`${environment.api_url}/user/forgotpassword`, body)
             .pipe(map((res: any) => {
                 return res;
             }));
+    }
+
+    googleAuth() {
+        return this.httpClient.get(`${environment.api_url}/auth/google`).pipe(map((res: any) => {
+            console.log(res);
+            return res;
+        }));
     }
 
 

@@ -25,14 +25,17 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
         return of(true);
       }
       const token = route.queryParamMap.get('token');
+      console.log(route.queryParamMap.get('token'));
       // tslint:disable-next-line:no-debugger
-
+      // debugger;
       if (token) {
+        console.log('Hay un token ', token);
         return this.authService.isAuthenticated(token).pipe(
-          map((authenticated) => {
-            console.log(authenticated);
-            if (authenticated === true) {
+          map((authenticated: any) => {
+            console.log('Autenticado: ', authenticated);
+            if (authenticated.bandera === true) {
               this.jwtService.setToken(token);
+              this.jwtService.setUser(authenticated.usuario);
               return true;
             }
             this.router.navigate(['/login']);

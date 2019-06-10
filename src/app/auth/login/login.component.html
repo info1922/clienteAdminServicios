@@ -47,7 +47,11 @@
                         <!-- <div *ngIf="!!form.get('password').errors.minlength">  <strong>La contraseña debe de tener minimo 6 caracteres </strong> </div> -->
                     </div>
                     </fieldset>
-                    <button type="submit" class="btn btn-primary btn-lg btn-block"><i class="ft-unlock"></i> Ingresar</button>
+                    <button type="submit" class="btn btn-primary btn-block"><i class="ft-unlock"></i> Ingresar</button>
+                    <br>
+                    <a href="/api/auth/google" class="btn btn-block" style="background: #fff; color: rgba(0, 0, 0, 0.54); text-align: center; border: 2px solid #CDD2D4;">
+                    <i class="fa fa-google mr-2 red"></i>  Acceder con google
+                    </a>
                   </form>
                 </div>
                 <p class="text-center">¿Eres nuevo? <a [routerLink]="['/registro']" class="card-link"> Registrate</a></p>

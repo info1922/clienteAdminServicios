@@ -63,5 +63,11 @@ export class LoginComponent implements OnInit {
         });
   }
 
+  googleAuthHandler() {
+      this.authService.googleAuth().subscribe(data => {
+          console.log('Respuesta del servidor: ', data);
+      }, err => console.log('Error', err));
+  }
+
 
 }
