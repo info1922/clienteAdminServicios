@@ -40,13 +40,14 @@ export class PerfilService {
     return this.httpClient.put( url, body)
       .pipe(map( (resp: any) => {
         const token = this.authService.token;
+        const expires = this.authService.expires;
         const data = {
           token: `${token}`,
           user: resp.usuario
         };
         console.log('Data a actualizar: ', data);
         this.wsService.loginWs(data);
-        this.authService.guardarStorage(this.authService.token, resp.usuario);
+        this.authService.guardarStorage(this.authService.token, resp.usuario, expires);
         return true;
       }));
   }

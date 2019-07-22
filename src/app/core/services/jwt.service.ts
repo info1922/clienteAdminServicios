@@ -31,4 +31,16 @@ export class JwtService {
     window.localStorage.removeItem('usuario');
   }
 
+  setExpire(expires: number) {
+      window.localStorage.setItem('cad', JSON.stringify(expires));
+  }
+
+  getExpire() {
+      return window.localStorage.getItem('cad');
+  }
+
+  destroyExpires() {
+      window.localStorage.removeItem('cad');
+  }
+
 }

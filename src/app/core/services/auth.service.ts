@@ -5,8 +5,6 @@ import { User, LoginRsp, SignupRsp, Usuario, Registro } from '../models/usuario'
 import { Observable } from 'rxjs';
 import { JwtService } from './jwt.service';
 import { environment } from '../../../environments/environment';
-import { error } from 'util';
-import { isNullOrUndefined } from 'util';
 import { Router } from '@angular/router';
 import { Socket } from 'ngx-socket-io';
 import { WebsocketService } from './websocket.service';
@@ -18,6 +16,7 @@ export class AuthService {
 
     token: any;
     usuario: any;
+    expires: any;
 
     constructor(
         private httpClient: HttpClient,
@@ -31,10 +30,11 @@ export class AuthService {
     }
 
     cargarStorage() {
-        console.log('Storage: ', this.usuario);
+        /* console.log('Storage: ', this.usuario); */
         if (this.jwtservice.getToken()) {
             this.token = this.jwtservice.getToken();
             this.usuario = JSON.parse(this.jwtservice.getUser());
+            this.expires = this.jwtservice.getExpire();
 
             const data: any = {
                 token: this.token,
@@ -51,9 +51,10 @@ export class AuthService {
         }
     }
 
-    guardarStorage(token: string, usuario: any) {
+    guardarStorage(token: string, usuario: any, expires: any) {
         this.jwtservice.setToken(token);
         this.jwtservice.setUser(usuario);
+        this.jwtservice.setExpire(expires);
 
         this.usuario = usuario;
         this.token = token;
@@ -73,9 +74,10 @@ export class AuthService {
     login(body: User): Observable<LoginRsp> {
         return this.httpClient.post<LoginRsp>(`${environment.api_url}/user/login`, body)
         .pipe(map((res: any) => {
-        this.guardarStorage(res.token, res.user);
-        this.token = [res.token];
-        return res;
+            /* console.log('ExpiresToken: ', res.expires); */
+            this.guardarStorage(res.token, res.user, res.expires);
+            this.token = [res.token];
+            return res;
         }));
     }
 
@@ -89,8 +91,10 @@ export class AuthService {
         })
         };
         return this.httpClient.get<boolean>(`${environment.api_url}/auth/authenticate`, httpOptions).pipe(map((res: any) => {
-            this.guardarStorage(res.token, res.usuario);
-            this.token = [res.token];
+            /* console.log('Respuesta: 1 ', res); */
+            // this.guardarStorage(res.token, res.usuario, res.expires);
+            // this.token = [res.token];
+            this.jwtservice.setUser(res.usuario);
             this.cargarStorage();
             return res;
         }, err => {
@@ -113,8 +117,9 @@ export class AuthService {
     }
 
     googleAuth() {
+        /* console.log('Google'); */
         return this.httpClient.get(`${environment.api_url}/auth/google`).pipe(map((res: any) => {
-            console.log(res);
+            /* console.log('Respuesta servidor: 2 ', res); */
             return res;
         }));
     }

@@ -21,9 +21,9 @@ export class FavoritosComponent implements OnInit {
         this.getFavoritos();
 
         this.favService.escucharFavoritos().subscribe((msg: any) => {
-            console.log('Cambios de favoritos');
+            /* console.log('Cambios de favoritos'); */
             this.favoritos = msg.neFav;
-            console.log(this.favoritos);
+            /* console.log(this.favoritos); */
         });
     }
 
@@ -39,7 +39,7 @@ export class FavoritosComponent implements OnInit {
             this.favService.escucharFavoritos().subscribe((msg: any) => {
                 this.todosNeg.Negocios();
                 this.favoritos = msg.neFav;
-                console.log(this.favoritos);
+                /* console.log(this.favoritos); */
             });
         });
     }

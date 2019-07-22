@@ -42,9 +42,14 @@ export class MenuComponent implements OnInit {
             console.log('Respuesta del servidor: ', res);
         }, error => {
             console.log('Algo salio mal', error);
+            this.jwtservice.destroyToken();
+            this.jwtservice.destroyUser();
+            this.jwtservice.destroyExpires();
+            this.router.navigate(['login']);
         }, () => {
             this.jwtservice.destroyToken();
             this.jwtservice.destroyUser();
+            this.jwtservice.destroyExpires();
             this.router.navigate(['login']);
             this.wsService.logoutWs();
         });

@@ -33,7 +33,8 @@ export class FavoritosService {
         const url = `${environment.api_url}/user/favdelete/${id}`;
         return this.httpClient.delete(url).pipe(map((resp: any) => {
             const token = this.authService.token;
-            this.authService.guardarStorage(token, resp.user);
+            const expires = this.authService.expires;
+            this.authService.guardarStorage(token, resp.user, expires);
             return resp;
         }));
     }

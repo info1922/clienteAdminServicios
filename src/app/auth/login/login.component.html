@@ -7,8 +7,8 @@
     </div>
     <div class="content-body">
 
-      <section class="flexbox-container">
-        <div class="col-12 d-flex align-items-center">
+      <section class="flexbox-container col-sm-12 col-xs-12">
+        <div class="col-12 col-sm-12 col-xs-12 d-flex align-items-center">
 
             <div class="card border-grey border-lighten-3 px-2 py-2 m-0">
               <div class="card-header border-0">
@@ -49,9 +49,12 @@
                     </fieldset>
                     <button type="submit" class="btn btn-primary btn-block"><i class="ft-unlock"></i> Ingresar</button>
                     <br>
-                    <a href="/api/auth/google" class="btn btn-block" style="background: #fff; color: rgba(0, 0, 0, 0.54); text-align: center; border: 2px solid #CDD2D4;">
-                    <i class="fa fa-google mr-2 red"></i>  Acceder con google
+                    <a href="api/auth/google" class="btn btn-block" style="background: #fff; color: rgba(0, 0, 0, 0.54); text-align: center; border: 2px solid #CDD2D4;">
+                        <i class="fa fa-google mr-2 red"></i>  Acceder con google
                     </a>
+                    <!-- <a (click)="googleAuthHandler()" class="btn btn-block" style="background: #fff; color: rgba(0, 0, 0, 0.54); text-align: center; border: 2px solid #CDD2D4;">
+                    <i class="fa fa-google mr-2 red"></i>  Acceder con google
+                    </a> -->
                   </form>
                 </div>
                 <p class="text-center">¿Eres nuevo? <a [routerLink]="['/registro']" class="card-link"> Registrate</a></p>
