@@ -48,7 +48,7 @@ export class TodosnegociosService {
         return this.httpClient.put(url, body).pipe(map((resp: any) => {
 
             const token = this.authService.token;
-            const expires = this.authService.expires;
+            const expires = parseInt(this.jwtService.getExpire(), 10);
             this.authService.guardarStorage(token, resp.usuario, expires);
             return resp;
         }));
@@ -63,7 +63,7 @@ export class TodosnegociosService {
 
         return this.httpClient.post(url, body).pipe(map((resp: any) => {
             const token = this.authService.token;
-            const expires = this.authService.expires;
+            const expires = parseInt(this.jwtService.getExpire(), 10);
             this.authService.guardarStorage(token, resp.usuario, expires);
             return resp;
         }));
@@ -78,7 +78,7 @@ export class TodosnegociosService {
 
         return this.httpClient.post(url, body).pipe(map((resp: any) => {
             const token = this.authService.token;
-            const expires = this.authService.expires;
+            const expires = parseInt(this.jwtService.getExpire(), 10);
             this.authService.guardarStorage(token, resp.usuario, expires);
             return resp;
         }));

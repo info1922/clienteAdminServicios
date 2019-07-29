@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs';
 export class LoginComponent implements OnInit {
 
   loginc: Subscription;
+  direccion: 'https://serviciosmiahutlan.herokuapp.com/api/auth/google';
   us;
     form = new FormGroup({
       email: new FormControl(null, [Validators.required, Validators.email]),
@@ -50,7 +51,7 @@ export class LoginComponent implements OnInit {
         .subscribe((data: any ) => {
 
             // Mandamos el token al servidor
-            console.log('La data del usaurio: ', data);
+           /*  console.log('La data del usaurio: ', data); */
             this.wsService.loginWs(data)
             .then(() => {
                 this.router.navigate(['principal']);
@@ -68,6 +69,11 @@ export class LoginComponent implements OnInit {
           console.log('Respuesta del servidor: ', data);
       }, err => console.log('Error', err));
   }
+
+    googleRedirect() {
+
+        this.router.navigateByUrl( this.direccion);
+    }
 
 
 }

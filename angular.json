@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pruebasDeSockets": {
+    "pruebasdesockets": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pruebasDeSockets",
+            "outputPath": "dist/pruebasdesockets",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -58,18 +58,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pruebasDeSockets:build"
+            "browserTarget": "pruebasdesockets:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pruebasDeSockets:build:production"
+              "browserTarget": "pruebasdesockets:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pruebasDeSockets:build"
+            "browserTarget": "pruebasdesockets:build"
           }
         },
         "test": {
@@ -103,7 +103,7 @@
         }
       }
     },
-    "pruebasDeSockets-e2e": {
+    "pruebasdesockets-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -112,11 +112,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "pruebasDeSockets:serve"
+            "devServerTarget": "pruebasdesockets:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "pruebasDeSockets:serve:production"
+              "devServerTarget": "pruebasdesockets:serve:production"
             }
           }
         },
@@ -132,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "pruebasDeSockets"
+  "defaultProject": "pruebasdesockets"
 }

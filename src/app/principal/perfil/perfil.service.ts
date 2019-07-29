@@ -17,6 +17,7 @@ export class PerfilService {
   constructor(
     public httpClient: HttpClient,
     public authService: AuthService,
+    public jwtService: JwtService,
     public wsService: WebsocketService) {
 
     }
@@ -40,7 +41,8 @@ export class PerfilService {
     return this.httpClient.put( url, body)
       .pipe(map( (resp: any) => {
         const token = this.authService.token;
-        const expires = this.authService.expires;
+        const expires = parseInt(this.jwtService.getExpire(), 10);
+        console.log('Cambio de nombre: ', expires);
         const data = {
           token: `${token}`,
           user: resp.usuario
