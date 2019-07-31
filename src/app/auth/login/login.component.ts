@@ -71,8 +71,10 @@ export class LoginComponent implements OnInit {
   }
 
     googleRedirect() {
+        console.log('entrando a la funcion');
+        window.location.href = 'http://www.w3schools.com';
+       // this.router.navigateByUrl( this.direccion);
 
-        this.router.navigateByUrl( this.direccion);
     }
 
 

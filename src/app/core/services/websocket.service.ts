@@ -32,11 +32,18 @@ export class WebsocketService {
 
         this.socket.on('disconnect', () => {
             console.log('Desconectado del servidor');
+            this.socketStatus = false;
             /* this.jwtService.destroyToken();
             this.jwtService.destroyUser();
             this.route.navigate(['login']); */
-            window.location.reload();
-            this.socketStatus = false;
+            // window.location.reload();
+            setTimeout(() => {
+                this.jwtService.destroyExpires();
+                this.jwtService.destroyToken();
+                this.jwtService.destroyUser();
+                alert('Servidor fuera de linea');
+                this.route.navigate(['login']);
+            }, 7000);
         });
 
     }

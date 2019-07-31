@@ -35,10 +35,10 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
         console.log('Expires:', expires); */
 
         // tslint:disable-next-line:no-debugger
-
+            console.log('Verficando ...');
             if (token) {
-                /* console.log('Tiene un token: ', token); */
-                // console.log('Expires: ', expires);
+                console.log('Tiene un token: ', token);
+                console.log('Expires: ', expires);
                 this.jwtService.setToken(token);
                 this.jwtService.setExpire(parseInt(expires, 10));
 
