@@ -34,8 +34,9 @@ export class TodosnegociosService {
         const url = `${environment.api_url}/nese/${body._id}/${this.usuario._id}`;
 
         return this.httpClient.delete(url).pipe(map((resp: any) => {
-            console.log('Negocio eliminado: ', resp);
-            this.favService.escucharFavoritos();
+            /* console.log('Negocio eliminado: ', resp); */
+            this.jwtService.setUser(resp.acusuario);
+            // this.favService.escucharFavoritos();
         }));
     }
 

@@ -28,6 +28,8 @@ export class NegocioService {
         const url = `${environment.api_url}/nese`;
 
         return this.httpCliente.post(url, body).pipe(map((resp: any) => {
+            /* console.log('Respuesta: ', resp.user); */
+            this.jwtService.setUser(resp.user);
             return true;
         }));
     }

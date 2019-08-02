@@ -86,6 +86,7 @@ export class WebsocketService {
 
 /** Eventos recibidos por el cliente  desde el servidor */
     escuchar(evento: string) {
+        console.log('evento: ', evento);
         return this.socket.fromEvent(evento);
     }
 

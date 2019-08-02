@@ -28,17 +28,17 @@ export class TodosnegocioComponent implements OnInit {
         public toastService: ToastrService) {
 
             /* console.log(this.usuario._id); */
+            // this.escucharMensajeEliminado();
         }
 
     ngOnInit() {
         // this.negocios = this.nego.negocios;
         this.usuario = JSON.parse(this.jwtService.getUser());
-        this.Negocios();
         this.escucharSocket();
-        this.escucharMensajeEliminado();
+        this.Negocios();
         this.escucharMensajeEliminacionPersonal();
-        this.escucharMensajeLike();
        /*  console.log('Usuario en ngOninit: ', this.usuario); */
+        this.escucharMensajeLike();
 
 
     }
@@ -61,6 +61,7 @@ export class TodosnegocioComponent implements OnInit {
     escucharMensajeEliminacionPersonal() {
         this.wsService.escuchar('mensajepersonal')
             .subscribe((data: any) => {
+                console.log('Mensaje Personal', data);
                 this.toastService.warning(`${data.msg}`, ' ' , {
                     positionClass: 'toast-top-right',
                     timeOut: 5000,
