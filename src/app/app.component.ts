@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
     ngOnInit() {
         /* this.cargaUsuarios(); */
         this.mensajePrivado();
+        this.escucharMensajeLike();
 
     }
 
@@ -42,6 +43,19 @@ export class AppComponent implements OnInit {
                 });
             console.log('Notificación ', msg);
         });
+    }
+
+    escucharMensajeLike() {
+        this.wsService.escuchar('mensajepersonallike')
+            .subscribe((data: any) => {
+                this.toas.info(`${data.msg}`, ' ',  {
+                    positionClass: 'toast-top-right',
+                    timeOut: 5000,
+                    progressBar: true,
+                    closeButton: true
+                });
+                console.log('Notificacion like: ', data);
+            });
     }
 
      /* cargaUsuarios() {

@@ -37,8 +37,8 @@ export class TodosnegocioComponent implements OnInit {
         this.escucharSocket();
         this.Negocios();
         this.escucharMensajeEliminacionPersonal();
-       /*  console.log('Usuario en ngOninit: ', this.usuario); */
-        this.escucharMensajeLike();
+
+        // this.escucharMensajeLike();
 
 
     }
